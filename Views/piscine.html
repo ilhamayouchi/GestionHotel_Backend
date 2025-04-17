@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+        <title>PALAIS REVES- Piscine de l'Hôtel </title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+        <style>
+            luxury-section {
+ 
+  position: relative;
+  overflow: hidden;
+}
+
+.subtitle-decorator {
+  display: block;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: var(--primary-color);
+  margin-bottom: 3rem;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.main-image {
+  transform: scale(1.02);
+  transition: transform 0.8s ease;
+}
+
+.image-container:hover .main-image {
+  transform: scale(1.1);
+}
+
+.floating-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(197, 164, 126, 0.95);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  backdrop-filter: blur(5px);
+}
+
+.badge-year {
+  display: block;
+  font-size: 0.8em;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.experience-title {
+  font-size: 2.2rem;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+.luxury-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 2.5rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.service-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--primary-color), var(--gold));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.service-card:hover::before {
+  opacity: 0.05;
+}
+
+.service-icon-wrapper {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-icon-wrapper {
+  transform: scale(1.1);
+}
+
+.service-content h5 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.service-content p {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .section-title {
+    font-size: 2.2rem;
+  }
+  
+  .experience-title {
+    font-size: 1.8rem;
+  }
+}
+:root {
+            --primary-color: #852929;
+            --primary-light: #a33434;
+            --gold: #c5a47e;
+            --cream: #f5f5f0;
+          }
+      
+          body {
+            font-family: 'Playfair Display', serif;
+          }
+      
+          .logo-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 3;
+            transition: transform 0.3s ease;
+          }
+      
+          .logo-container:hover {
+            transform: scale(1.05);
+          }
+      
+          .logo-container img {
+            height: 90px;
+            width: auto;
+          }
+      
+          .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            margin: 0 20px;
+          }
+      
+          .hero-title {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: #c5a47e;
+          }
+      
+          .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #f5f5f0;
+          }
+          .section-title {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+          }
+      
+          .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 15px auto;
+          }
+      
+          .feature-icon {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+          }
+      
+          .card {
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+          }
+      
+          .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+          }
+      
+          .card-img-top {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+          }
+      
+          .card:hover .card-img-top {
+            transform: scale(1.05);
+          }
+      
+          .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+          }
+      
+          .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(133, 41, 41, 0.3);
+          }
+          .carousel-item img {
+            height: 600px;
+            object-fit: cover;
+          }
+      
+          .carousel-caption {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            border-radius: 10px;
+          }
+      
+          .form-control {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+          }
+      
+          .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(133, 41, 41, 0.25);
+          }
+      
+          .stats-section {
+            background: var(--cream);
+            padding: 4rem 0;
+          }
+      
+          .stat-item {
+            text-align: center;
+            padding: 2rem;
+          }
+      
+          .stat-number {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+          }
+      
+          .stat-label {
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          }
+      
+         
+      
+</style>
+         
+      </head>
+      <body>
+        <!-- Section En-tête -->
+        <header class="text-white text-center" style="position: relative; overflow: hidden; height: 100vh;">
+          <div class="logo-container animate__animated animate__fadeInDown">
+            <img src="PALIAS HOTEL.png" alt="Logo Hotel" class="img-fluid">
+          </div>
+          
+          <video autoplay muted loop style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: 1; transform: translate(-50%, -50%);">
+            <source src="79812-570532707_small.mp4" type="video/mp4">
+          </video>
+          
+          <div style="background: linear-gradient(to bottom, rgba(133, 41, 41, 0.3), rgba(0, 0, 0, 0.6)); height: 100%; position: relative; z-index: 2; display: flex; align-items: center; justify-content: center;">
+            <div class="hero-content animate__animated animate__fadeIn">
+              <h1 class="hero-title">L'Excellence du Bien-Être</h1>
+              <p class="hero-subtitle">Une expérience unique de détente et de luxe</p>
+              <a href="#tarifs" class="btn btn-primary mt-4">Réserver maintenant</a>
+            </div>
+          </div>
+        </header>
+      
+        <!-- Section Présentation -->
+        <section id="bgservices"  class="py-5 luxury-section">
+            <div class="container">
+              <h2 class="section-title text-center mb-5 animate__animated animate__fadeIn">
+                <span class="subtitle-decorator">Découvrez</span>
+                Notre Oasis de Luxe
+              </h2>
+              
+              <div class="row g-5 align-items-center">
+                <div class="col-md-6 animate__animated animate__fadeInLeft">
+                  <div class="image-container">
+                    <img src="water-165219_1280.jpg" alt="Vue panoramique de notre piscine de luxe" class="img-fluid main-image" loading="lazy">
+                    <div class="floating-badge">
+                      Excellence
+                      <span class="badge-year">2024</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-md-6 animate__animated animate__fadeInRight">
+                  <div class="content-wrapper ps-md-4">
+                    <h3 class="experience-title">Une Expérience Inoubliable</h3>
+                    <p class="luxury-description">Plongez dans un univers de raffinement où chaque détail a été pensé pour votre bien-être. Notre piscine, véritable joyau architectural, vous offre un cadre idyllique pour des moments de pure détente.</p>
+                    
+                    <div class="services-grid">
+                      <article class="service-card">
+                        <div class="service-icon-wrapper">
+                          <i class="bi bi-water"></i>
+                        </div>
+                        <div class="service-content">
+                          <h5>Eau Pure</h5>
+                          <p>Traitement par électrolyse au sel</p>
+                        </div>
+                      </article>
+          
+                      <article class="service-card">
+                        <div class="service-icon-wrapper">
+                          <i class="bi bi-sun"></i>
+                        </div>
+                        <div class="service-content">
+                          <h5>Solarium VIP</h5>
+                          <p>Espace privé vue panoramique</p>
+                        </div>
+                      </article>
+          
+                      <article class="service-card">
+                        <div class="service-icon-wrapper">
+                          <i class="bi bi-cup-straw"></i>
+                        </div>
+                        <div class="service-content">
+                          <h5>Bar Premium</h5>
+                          <p>Cocktails signature & champagne</p>
+                        </div>
+                      </article>
+          
+                      <article class="service-card">
+                        <div class="service-icon-wrapper">
+                          <i class="bi bi-umbrella"></i>
+                        </div>
+                        <div class="service-content">
+                          <h5>Espace Privé</h5>
+                          <p>Service personnalisé 5 étoiles</p>
+                        </div>
+                      </article>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+        <!-- Section Statistiques -->
+        <section class="stats-section">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="stat-item">
+                  <div class="stat-number">28°C</div>
+                  <div class="stat-label">Température Idéale</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="stat-item">
+                  <div class="stat-number">500m²</div>
+                  <div class="stat-label">Surface Totale</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="stat-item">
+                  <div class="stat-number">24/7</div>
+                  <div class="stat-label">Service Conciergerie</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="stat-item">
+                  <div class="stat-number">100%</div>
+                  <div class="stat-label">Satisfaction Client</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      
+        <!-- Section Galerie Photos -->
+        <section class="py-5" id="bgpro">
+          <div class="container">
+            <h2 class="section-title">Notre Galerie</h2>
+            <div id="carouselPiscine" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner rounded shadow-lg">
+                <div class="carousel-item active">
+                  <img src="hotel 1.jpg" class="d-block w-100" alt="Vue de jour">
+                  <div class="carousel-caption">
+                    <h5>Vue Panoramique</h5>
+                    <p>Une piscine à débordement avec vue imprenable</p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="bali-2975787_1280.jpg" class="d-block w-100" alt="Vue nocturne">
+                  <div class="carousel-caption">
+                    <h5>Ambiance Nocturne</h5>
+                    <p>Une atmosphère magique sous les étoiles</p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="swimming-pool-6828491_1280.jpg" class="d-block w-100" alt="Vue nocturne">
+                    <div class="carousel-caption">
+                      <h5>Ambiance Nocturne</h5>
+                      <p>Une atmosphère magique sous les étoiles</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="woman-4373078_1280.jpg" class="d-block w-100" alt="Vue nocturne">
+                    <div class="carousel-caption">
+                      <h5>Ambiance Nocturne</h5>
+                      <p>Une atmosphère magique sous les étoiles</p>
+                    </div>
+                  </div>
+                <!-- Autres images du carousel -->
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselPiscine" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselPiscine" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </button>
+            </div>
+          </div>
+        </section>
+      
+        <!-- Section Tarifs -->
+        <section id="tarifs" class="py-5" style="background: var(--cream);">
+          <div class="container">
+            <h2 class="section-title">Nos Prestations</h2>
+            <div class="row g-4">
+              <div class="col-md-4">
+                <div class="card h-100 shadow-lg">
+                  <div class="card-body text-center">
+                    <h3 class="card-title" style="color: var(--gold);">Accès Journée</h3>
+                    <p class="display-4 my-4" style="color: var(--primary-color);">30€</p>
+                    <ul class="list-unstyled">
+                      <li class="mb-3"><i class="bi bi-check-circle me-2" style="color: var(--primary-color)"></i>Accès piscine</li>
+                      <li class="mb-3"><i class="bi bi-check-circle me-2" style="color: var(--primary-color)"></i>Transat réservé</li>
+                      <li class="mb-3"><i class="bi bi-check-circle me-2" style="color: var(--primary-color)"></i>Serviettes incluses</li>
+                    </ul>
+                    
+                    <a href="#reservation" class="btn btn-primary mt-3" data-price="30">Réserver</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card h-100 shadow-lg">
+                  <div class="card-body text-center">
+                    <h3 class="card-title" style="color: var(--gold);">Pass Couple</h3>
+                    <p class="display-4 my-4" style="color: var(--primary-color);">50€</p>
+                    <ul class="list-unstyled">
+                      <li class="mb-3"><i class="bi bi-check-circle me-2" style="color: var(--primary-color)"></i>Accès piscine</li>
+                      <li class="mb-3"><i class="bi bi-check-circle me-2" style="color: var(--primary-color)"></i>2 Transats réservés</li>
+                      <li class="mb-3"><i class="bi bi-check-circle me-2" style="color: var(--primary-color)"></i>Cocktail offert</li>
+                    </ul>
+                    <a href="#reservation" class="btn btn-primary mt-3" data-price="50">Réserver</a>
+      
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card h-100 shadow-lg">
+                  <div class="card-body text-center">
+                    <h3 class="card-title" style="color: var(--gold);">Client Hôtel</h3>
+                    <p class="display-4 my-4" style="color: var(--primary-color);">Gratuit</p>
+                    <ul class="list-unstyled">
+                      <li class="mb-3"><i class="bi bi-check-circle me-2" style="color: var(--primary-color)"></i>Accès piscine inclus</li>
+                      <li class="mb-3"><i class="bi bi-check-circle me-2" style="color: var(--primary-color)"></i>Transat réservé</li>
+                      <li class="mb-3"><i class="bi bi-check-circle me-2" style="color: var(--primary-color)"></i>Cocktail de bienvenue</li>
+                    </ul>
+                    <a href="#reservation" class="btn btn-primary mt-3" data-price="0">Réserver</a>
+      
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+<!-- ... (reste du head et body jusqu'à la section réservation) ... -->
+
+<!-- Section Réservation -->
+<section id="reservation" class="py-5 bg-white" >
+  <div class="container">
+    <h2 class="section-title">Réservez Votre Place</h2>
+    <form id="reservation-form">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nom</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="date" class="form-label">Date de Réservation</label>
+        <input type="date" class="form-control" id="date" required>
+      </div>
+      <div class="mb-3">
+        <label for="displayed-price" class="form-label">Prix</label>
+        <input type="text" class="form-control" id="displayed-price" readonly>
+      </div>
+      <input type="hidden" id="reservation-price" name="price">
+      <button type="submit" class="btn btn-primary">Réserver</button>
+      <button type="button" id="download-ticket" class="btn btn-secondary ms-2" style="display: none;">Télécharger le ticket</button>
+    </form>
+  </div>
+</section>
+<div class="container-fluid footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+  <div class="container py-5">
+      <div class="row g-5">
+          <div class="col-lg-3 col-md-6">
+              <h5 class="text-white mb-4">Get In Touch</h5>
+              <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+              <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+              <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+              <div class="d-flex pt-2">
+                  <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                  <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                  <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                  <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            
+              <h5 class="text-white mb-4"> Liens</h5>
+              <a  class="btn btn-link" href="index.html#bgservices">Notre Hotel</a>
+              <a  class="btn btn-link" href="index.html#bgpro">Actualités</a>
+              <a class="btn btn-link" href="index.html#contact-section">Contact </a>
+              <a class="btn btn-link" href="about.html">Services</a>
+              
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <h5 class="text-white mb-4">Photo Gallery</h5>
+              <div class="row g-2 pt-2">
+                <div class="col-4">
+                  <img class="img-fluid rounded bg-light p-1" src="hotel 1.jpg" alt="">
+              </div>
+              <div class="col-4">
+                  <img class="img-fluid rounded bg-light p-1" src="bali-2975787_1280.jpg" alt="">
+              </div>
+              <div class="col-4">
+                  <img class="img-fluid rounded bg-light p-1" src="hotel 6.jpg" alt="">
+              </div>
+              <div class="col-4">
+                  <img class="img-fluid rounded bg-light p-1" src="3D Model Interior Restaurant 80 Scenes File 3dsmax By Phuong Ha.jpg" alt="">
+              </div>
+              <div class="col-4">
+                  <img class="img-fluid rounded bg-light p-1" src="res.jpg" alt="">
+              </div>
+              <div class="col-4">
+                  <img class="img-fluid rounded bg-light p-1" src="img/property-6.jpg" alt="">
+              </div>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h5 class="text-white mb-4">Newsletter</h5>
+            <p>Une zone pour connecter directement.</p>
+            <div class="position-relative mx-auto" style="max-width: 400px;">
+                <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="copyright">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+              &copy; <a class="border-bottom" href="#"></a> All Right Reserved. 
+  <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+  Designed By <a class="border-bottom" href="https://PALAIS_REVES.com">PALAIS_REVES</a> 
+            </div>
+              <div class="col-md-6 text-center text-md-end">
+                  <div class="footer-menu">
+                      <a href="">Home</a>
+                      <a href="">Cookies</a>
+                      <a href="">Help</a>
+                      <a href="">FQAs</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Footer End -->
+<!-- ... (footer) ... -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Boutons de réservation
+  document.querySelectorAll('.btn-primary[data-price]').forEach(button => {
+    button.addEventListener('click', function () {
+      const price = this.getAttribute('data-price');
+      document.getElementById('reservation-price').value = price;
+      document.getElementById('displayed-price').value = price === '0' ? 'Gratuit' : price + '€';
+      window.scrollTo({ top: document.getElementById('reservation').offsetTop, behavior: 'smooth' });
+    });
+  });
+
+  // Gestion du formulaire
+  const form = document.getElementById('reservation-form');
+  const downloadBtn = document.getElementById('download-ticket');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    downloadBtn.style.display = 'inline-block';
+  });
+
+  // Fonctionnalité de téléchargement du ticket
+  downloadBtn.addEventListener('click', function () {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const date = document.getElementById('date').value;
+    const price = document.getElementById('reservation-price').value;
+
+    doc.text('Ticket de Réservation', 10, 10);
+    doc.text(`Nom: ${name}`, 10, 30);
+    doc.text(`Email: ${email}`, 10, 50);
+    doc.text(`Date: ${date}`, 10, 70);
+    doc.text(`Prix: ${price === '0' ? 'Gratuit' : price + '€'}`, 10, 90);
+
+    doc.save(`Reservation_${name}_${date}.pdf`);
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+      </body>
+</html>

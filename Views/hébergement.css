@@ -1,0 +1,314 @@
+/* Variables de couleur */
+:root {
+    --primary-color: #852929;
+    --primary-light: #a33434;
+    --gold: #c5a47e;
+    --cream: #f5f5f0;
+}
+
+/* Style général pour le corps */
+body {
+    background-color: var(--cream); /* Couleur de fond */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;   
+}
+
+/* Widget de réservation */
+.reservation-widget {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url('suite-3-1.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 0 auto; /* Centrer horizontalement */
+    color: #fff; /* Assurer la lisibilité du texte */
+    position: relative;
+    overflow: hidden;
+}
+
+.reservation-item {
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.3); /* Couleur de bordure ajustée */
+    padding: 10px;
+}
+
+.reservation-item:last-child {
+    border-right: none;
+}
+
+.label {
+    font-size: 14px;
+    color: #fff;
+}
+
+.value {
+    font-size: 18px;
+    color: #fff;
+    margin: 5px 0;
+}
+
+.reserve-button {
+    background-color: var(--gold);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.reserve-button:hover {
+    background-color: var(--primary-light);
+}
+
+.info-text .btn {
+    text-decoration: none;
+    background-color: #af8954;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Sections détaillées */
+.details {
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 1200px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Mise en page pour le contenu image et texte */
+.detail-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.detail-img {
+    width: 50%;
+    border-radius: 10px;
+}
+
+.text-content {
+    width: 50%;
+}
+
+.hotel-title {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.sub-title {
+    color: #34495e;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Sections d'image avec effets de survol */
+.containerp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.section {
+    position: relative;
+    margin: 10px;
+}
+
+.section img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.section:hover .overlay {
+    opacity: 1;
+}
+
+.overlay h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.discover-link {
+    color: var(--gold);
+    text-decoration: underline;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+/* Styles globaux */
+.containerp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Photo à gauche */
+.photo {
+    flex: 1; /* Prend 50% de la largeur */
+}
+
+.photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Description à droite */
+.description {
+    flex: 1; /* Prend 50% de la largeur */
+    padding: 20px;
+}
+
+.description h2 {
+    color: #B81F39; /* Couleur du titre */
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.description p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.icons {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    gap: 15px; /* Espacement entre les icônes */
+}
+
+.icons img {
+    width: 40px; /* Taille des icônes */
+    height: auto;
+}
+
+/* Conteneur de réservation */
+.booking-container {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 20px auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-left: 30px;
+}
+
+.booking-field {
+    flex: 1;
+}
+
+.booking-field label {
+    display: block;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.booking-field input,
+.booking-field select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Espacement entre les dates et le bouton réserver */
+.booking-field {
+    margin-bottom: 20px;/* Ajout d'espace après la date d'arrivée */
+    margin-left: 30px; 
+    margin-right: 30px;
+}
+
+.room-info {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.room-count,
+.person-count {
+    color: var(--gold);
+    font-weight: bold;
+}
+
+.reserve-button {
+    background-color: var(--gold);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.reserve-button:hover {
+    background-color: var(--primary-light);
+}
+
+@media (max-width: 768px) {
+    .booking-container {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .booking-field {
+        width: 100%;
+    }
+}

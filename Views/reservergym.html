@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation Salle de Sport</title>
+    <style>
+        :root {
+            --primary-color: #852929;
+            --primary-light: #a33434;
+            --primary-dark: #672020;
+            --primary-hover: #993333;
+            --gold: #c5a47e;
+            --cream: #f5f5f0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; 
+        }
+
+        .container {
+            flex: 1; 
+            max-width: 800px; 
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: 0 auto; 
+        }
+
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar .step {
+            width: 24%;
+            text-align: center;
+            position: relative;
+            padding: 10px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .progress-bar .step.active {
+            border-bottom: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-top: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%; 
+        }
+
+        button.previous-step {
+            background-color: var(--primary-dark);
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        input[type="date"],
+        input[type="time"],
+        input[type="number"],
+        input[type="text"],
+        select, 
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .activity-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .activity-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .activity-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .activity-card.selected {
+            background-color: var(--primary-light);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        nav {
+            background-color: #fff; 
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #852929; 
+            font-weight: bold;
+        }
+
+        .footer {
+            background-color: var(--gold); 
+            color: white; 
+            padding: 10px 0; 
+        }
+
+        .footer-container {
+            display: flex; 
+            justify-content: space-between; 
+            flex-wrap: wrap; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+
+        .footer-section {
+            flex: 1; 
+            padding: 5px; 
+            min-width: 150px; 
+        }
+
+        .footer-section h5 {
+            font-size: 1.1em; 
+            margin-bottom: 5px; 
+        }
+
+        .footer-section p, .footer-section a {
+            margin-bottom: 3px; 
+            color: white; 
+            text-decoration: none; 
+        }
+
+        .footer-link:hover {
+            text-decoration: underline; 
+        }
+
+        .social-media {
+            margin-top: 5px; 
+        }
+
+        .social-btn {
+            margin-right: 5px; 
+            color: white; 
+            font-size: 18px; 
+        }
+
+        .newsletter {
+            display: flex; 
+        }
+
+        .newsletter input {
+            flex: 1; 
+            padding: 3px; 
+            border: none; 
+            border-radius: 5px 0 0 5px; 
+        }
+
+        .newsletter button {
+            padding: 3px 8px; 
+            background-color: var(--primary-light); 
+            border: none; 
+            border-radius: 0 5px 5px 0; 
+            cursor: pointer; 
+        }
+
+        .newsletter button:hover {
+            background-color: var(--primary-color); /* Couleur au survol */
+        }
+
+        .copyright {
+            text-align: center; /* Centrer le texte */
+            padding: 5px 0; /* Espacement vertical réduit */
+            border-top: 1px solid white; /* Bordure supérieure */
+            margin-top: 5px; /* Espacement au-dessus réduit */
+        }
+
+        .footer-menu {
+            margin-top: 5px; /* Espacement au-dessus du menu réduit */
+        }
+
+        .footer-menu a {
+            color: white; /* Couleur des liens */
+            margin: 0 5px; /* Espacement horizontal réduit */
+            text-decoration: none; /* Pas de soulignement */
+        }
+
+        .footer-menu a:hover {
+            text-decoration: underline; /* Soulignement au survol */
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column; /* Disposition en colonne sur mobile */
+                align-items: center; /* Centrer les éléments */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-container">
+            <div class="icon p-2 me-2">
+                <img class="img-fluid" src="PALIAS HOTEL.png" alt="Icon" style="width: 70px; height: 70px;">
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="hébergement.html">HÉBERGEMENT</a></li>
+                <li><a href="#">SERVICES</a></li>
+                <li><a href="gallerie.html">GALLERIE</a></li>
+                <li><a href="events.html">ÉVÉNEMENT ÉXCLUSIF</a></li>
+                <li><a href="inscription.html">CONNEXION</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="progress-bar">
+            <div class="step active">1. Activité</div>
+            <div class="step">2. Date et Horaire</div>
+            <div class="step">3. Détails</div>
+            <div class="step">4. Confirmation</div>
+        </div>
+
+        <form id="reservationForm">
+            <!-- Étape 1: Choix de l'activité -->
+            <div class="form-step active">
+                <h2>Choisissez votre activité</h2>
+                <div class="activity-cards">
+                    <div class="activity-card" data-activity="yoga" data-price="200">
+                        <h3>Yoga</h3>
+                        <p>200 DH / séance</p>
+                    </div>
+                    <div class="activity-card" data-activity="fitness" data-price="150">
+                        <h3>Fitness</h3>
+                        <p>150 DH / séance</p>
+                    </div>
+                    <div class="activity-card" data-activity="pilates" data-price="180">
+                        <h3>Pilates</h3>
+                        <p>180 DH / séance</p>
+                    </div>
+                </div>
+                <button type="button" class="next-step">Suivant</button>
+            </div>
+
+            <!-- Étape 2: Date et Horaire -->
+            <div class="form-step">
+                <h2>Choisissez votre date et horaire</h2>
+                <label for="bookingDate">Date:</label>
+                <input type="date" id="bookingDate" required>
+                <label for="bookingTime">Horaire:</label>
+                <select id="bookingTime" required>
+                    <option value="">Choisissez un horaire</option>
+                    <option value="08:00">08:00 - 09:00</option>
+                    <option value="09:00">09:00 - 10:00</option>
+                    <option value="10:00">10:00 - 11:00</option>
+                    <option value="17:00">17:00 - 18:00</option>
+                    <option value="18:00">18:00 - 19:00</option>
+                </select>
+                <button type="button" class="previous-step">Précédent</button>
+                <button type="button" class="next-step">Suivant</button>
+            </div>
+
+            <!-- Étape 3: Détails -->
+            <div class="form-step">
+                <h2>Détails de la réservation</h2>
+                <p>Activité: <span id="summaryActivity"></span></p>
+                <p>Date: <span id="summaryDate"></span></p>
+                <p>Horaire: <span id="summaryTime"></span></p>
+                <p>Prix: <span id="summaryPrice"></span> DH</p>
+                <label for="specialRequests">Demandes particulières:</label>
+                <textarea id="specialRequests" rows="4"></textarea>
+                <button type="button" class="previous-step">Précédent</button>
+                <button type="button" class="next-step">Suivant</button>
+            </div>
+
+            <!-- Étape 4: Paiement -->
+            <div class="form-step">
+                <h2>Confirmation et Paiement</h2>
+                <label for="cardNumber">Numéro de carte:</label>
+                <input type="text" id="cardNumber" required>
+                <label for="cardName">Nom sur la carte:</label>
+                <input type="text" id="cardName" required>
+                <label for="expiryDate">Date d'expiration:</label>
+                <input type="text" id="expiryDate" placeholder="MM/AA" required>
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" required>
+                <button type="button" class="previous-step">Précédent</button>
+                <button type="submit">Confirmer</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h5>Get In Touch</h5>
+                <p><i class="fa fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+                <p><i class="fa fa-phone-alt"></i> +012 345 67890</p>
+                <p><i class="fa fa-envelope"></i> info@example.com</p>
+                <div class="social-media">
+                    <a class="social-btn" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="social-btn" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="social-btn" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="social-btn" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h5>Liens</h5>
+                <a class="footer-link" href="index.html#bgservices">Notre Hotel</a>
+                <a class="footer-link" href="index.html#bgpro">Actualités</a>
+                <a class="footer-link" href="index.html#contact-section">Contact</a>
+                <a class="footer-link" href="about.html">Services</a>
+            </div>
+           
+            <div class="footer-section">
+                <h5>Newsletter</h5>
+                <p>Inscrivez-vous pour des mises à jour.</p>
+                <div class="newsletter">
+                    <input type="text" placeholder="Votre email">
+                    <button type="button">S'inscrire</button>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; Tous droits réservés. Conçu par <a href="https://PALAIS_REVES.com">PALAIS_REVES</a></p>
+            <div class="footer-menu">
+                <a href="">Home</a>
+                <a href="">Cookies</a>
+                <a href="">Help</a>
+                <a href="">FQAs</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('reservationForm');
+            const formSteps = Array.from(document.querySelectorAll('.form-step'));
+            const nextStepButtons = document.querySelectorAll('.next-step');
+            const previousStepButtons = document.querySelectorAll('.previous-step');
+            const activityCards = document.querySelectorAll('.activity-card');
+            let currentStep = 0;
+            let selectedActivity = null;
+
+            // Gestion de la sélection des activités
+            activityCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    activityCards.forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+                    selectedActivity = {
+                        name: card.dataset.activity,
+                        price: parseInt(card.dataset.price)
+                    };
+                });
+            });
+
+            nextStepButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    if (currentStep === 0 && !selectedActivity) {
+                        alert('Veuillez sélectionner une activité');
+                        return;
+                    }
+                    const currentFormStep = formSteps[currentStep];
+                    const inputs = currentFormStep.querySelectorAll('input[required], select[required]');
+                    let allValid = true;
+                    inputs.forEach(input => {
+                        if (!input.checkValidity()) {
+                            allValid = false;
+                        }
+                    });
+                    if (allValid) {
+                        goToStep(currentStep + 1);
+                    } else {
+                        currentFormStep.reportValidity();
+                    }
+                });
+            });
+
+            previousStepButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    goToStep(currentStep - 1);
+                });
+            });
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                alert('Réservation confirmée! Un email de confirmation vous sera envoyé.');
+            });
+
+            function goToStep(step) {
+                formSteps[currentStep].classList.remove('active');
+                currentStep = step;
+                formSteps[currentStep].classList.add('active');
+                updateProgressBar();
+                if (currentStep === 2) {
+                    updateSummary();
+                }
+            }
+
+            function updateProgressBar() {
+                const steps = document.querySelectorAll('.progress-bar .step');
+                steps.forEach((step, index) => {
+                    if (index <= currentStep) {
+                        step.classList.add('active');
+                    } else {
+                        step.classList.remove('active');
+                    }
+                });
+            }
+
+            function updateSummary() {
+                if (selectedActivity) {
+                    document.getElementById('summaryActivity').textContent = selectedActivity.name;
+                    document.getElementById('summaryDate').textContent = document.getElementById('bookingDate').value;
+                    document.getElementById('summaryTime').textContent = document.getElementById('bookingTime').value;
+                    document.getElementById('summaryPrice').textContent = selectedActivity.price;
+                }
+            }
+
+            // Configuration initiale
+            goToStep(0);
+        });
+    </script>
+</body>
+</html>

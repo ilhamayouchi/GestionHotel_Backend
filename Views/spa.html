@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPA</title>
+    <link rel="stylesheet" href="spa.css">
+    <link rel="stylesheet" href="foot&nav.css">
+    <style>
+        .main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.text-content {
+    flex: 1;
+    padding-right: 20px; /* Espace entre le texte et l'image */
+}
+
+.hammam-image {
+    max-width: 400px; /* Ajustez la taille de l'image */
+    height: auto;
+    border-radius: 5px;
+}
+nav {
+            background-color: #fff; /* Couleur de fond de la navbar */
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links li a {
+            text-decoration: none;
+            color: #852929; /* Couleur du texte */
+            font-weight: bold;
+        }
+        :root {
+    --primary-color: #852929;  /* Couleur principale */
+    --primary-light: #a33434;  /* Couleur principale claire */
+    --gold: #c5a47e;            /* Couleur dorée */
+    --cream: #f5f5f0;           /* Couleur crème */
+}
+
+.footer {
+    background-color: var(--gold); /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    padding: 10px 0; /* Espacement vertical réduit */
+}
+
+.footer-container {
+    display: flex; /* Disposition en flex */
+    justify-content: space-between; /* Espacement entre les sections */
+    flex-wrap: wrap; /* Permet aux sections de passer à la ligne si besoin */
+    max-width: 1200px; /* Largeur maximale */
+    margin: 0 auto; /* Centrer le conteneur */
+}
+
+.footer-section {
+    flex: 1; /* Chaque section prend un espace égal */
+    padding: 5px; /* Espacement interne réduit */
+    min-width: 150px; /* Largeur minimale réduite */
+}
+
+.footer-section h5 {
+    font-size: 1.1em; /* Taille de la police des titres réduite */
+    margin-bottom: 5px; /* Espacement sous les titres réduit */
+}
+
+.footer-section p, .footer-section a {
+    margin-bottom: 3px; /* Espacement sous les paragraphes et liens réduit */
+    color: white; /* Couleur des textes */
+    text-decoration: none; /* Pas de soulignement */
+}
+
+.footer-link:hover {
+    text-decoration: underline; /* Soulignement au survol */
+}
+
+.social-media {
+    margin-top: 5px; /* Espacement au-dessus des icônes réduit */
+}
+
+.social-btn {
+    margin-right: 5px; /* Espacement entre les icônes réduit */
+    color: white; /* Couleur des icônes */
+    font-size: 18px; /* Taille des icônes réduite */
+}
+
+.gallery {
+    display: flex; /* Disposition en flex pour les images */
+    flex-wrap: wrap; /* Permet aux images de passer à la ligne */
+    justify-content: space-between; /* Espacement entre les images */
+}
+
+.gallery img {
+    width: 30%; /* Largeur des images */
+    margin-bottom: 10px; /* Espacement en bas */
+    border-radius: 5px; /* Coins arrondis */
+}
+
+.newsletter {
+    display: flex; /* Disposition en flex pour le formulaire */
+}
+
+.newsletter input {
+    flex: 1; /* Prendre l'espace restant */
+    padding: 3px; /* Espacement interne réduit */
+    border: none; /* Pas de bordure */
+    border-radius: 5px 0 0 5px; /* Coins arrondis */
+}
+
+.newsletter button {
+    padding: 3px 8px; /* Espacement interne réduit */
+    background-color: var(--primary-light); /* Couleur de fond du bouton */
+    border: none; /* Pas de bordure */
+    border-radius: 0 5px 5px 0; /* Coins arrondis */
+    cursor: pointer; /* Changer le curseur au survol */
+}
+
+.newsletter button:hover {
+    background-color: var(--primary-color); /* Couleur au survol */
+}
+
+.copyright {
+    text-align: center; /* Centrer le texte */
+    padding: 5px 0; /* Espacement vertical réduit */
+    border-top: 1px solid white; /* Bordure supérieure */
+    margin-top: 5px; /* Espacement au-dessus réduit */
+}
+
+.footer-menu {
+    margin-top: 5px; /* Espacement au-dessus du menu réduit */
+}
+
+.footer-menu a {
+    color: white; /* Couleur des liens */
+    margin: 0 5px; /* Espacement horizontal réduit */
+    text-decoration: none; /* Pas de soulignement */
+}
+
+.footer-menu a:hover {
+    text-decoration: underline; /* Soulignement au survol */
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Disposition en colonne sur mobile */
+        align-items: center; /* Centrer les éléments */
+    }
+    
+    .gallery img {
+        width: 80%; /* Largeur des images sur mobile */
+    }
+    
+    .newsletter {
+        flex-direction: column; /* Disposition en colonne pour le formulaire */
+    }
+    
+    .newsletter input {
+        margin-bottom: 5px; /* Espacement en bas réduit */
+        width: 100%; /* Largeur à 100% sur mobile */
+    }
+}
+
+
+    </style>
+</head>
+<body>
+   <!-- Navbar -->
+   <nav>
+    <div class="nav-container">
+        <div class="icon p-2 me-2">
+            <img class="img-fluid" src="PALIAS HOTEL.png" alt="Icon" style="width: 70px; height: 70px;">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="hébergement.html">HÉBERGEMENT</a></li>
+            <li><a href="#">SERVICES</a></li>
+            <li><a href="gallerie.html">GALLERIE</a></li>
+            <li><a href="events.html">ÉVÉNEMENT ÉXCLUSIF</a></li>
+            <li><a href="inscription.html">CONNEXION</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+  <div class="container">
+    <h1 class="text-center">HAMMAM BY PALAISMAROC</h1>
+    <h2 class="text-center">UN VOYAGE ANCESTRAL VERS LE BIEN-ÊTRE</h2>
+    <div class="main-content d-flex justify-content-between align-items-center">
+        <div class="text-content">
+            <p>
+                Ce bain de vapeur empreint de mystère et de sérénité est bien plus qu'une simple expérience de relaxation : c'est un voyage sensoriel qui réveille les sens et apaise l'esprit. Dans l'atmosphère enveloppante du hammam, laissez-vous transporter par les effluves enivrants des huiles essentielles, tandis que la chaleur apaisante libère les tensions du corps et prépare votre corps à l'élimination des toxines et à la stimulation de la circulation sanguine.
+            </p>
+            <p>
+                Un véritable sanctuaire de détente, vous invitant à vous ressourcer et à vous reconnecter avec vous-même. Découvrez le hammam marocain et laissez-vous envelopper par ses bienfaits ancestraux pour une expérience inoubliable de bien-être et de purification.
+            </p>
+            <a class="rituels-button" href="www.palaismarrakechhotel.com.pdf" download="palaismarrakechhotel">NOS RITUELS</a>
+        </div>
+        <img src="hammam1.jpg" alt="Hammam" class="hammam-image">
+    </div>
+</div>
+    <div class="galleryy">
+        <img src="hammam2.jpg" alt="Image 1">
+        <img src="hammam1 (1).jpg" alt="Image 2">
+        <img src="les-hammams-04-.jpeg" alt="Image 3">
+        <img src="hammam2.jpg" alt="Image 4">
+        <img src="hammam2.jpg" alt="Image 4"> 
+        <img src="les-hammams-04-.jpeg" alt="Image 3">
+        <img src="hammam2.jpg" alt="Image 1">
+        <img src="hammam1 (1).jpg" alt="Image 2">
+        <img src="les-hammams-04-.jpeg" alt="Image 3">
+        <img src="hammam2.jpg" alt="Image 1">
+    </div>
+    <div class="contact-info">
+        <div class="contact-item">
+            <img src="clock icon (1).png" alt="Clock Icon">
+            <p>LUN. AU DIM. 09H00 À 21H00</p>
+        </div>
+        <div class="contact-item">
+            <img src="phone icon (1).png" alt="Phone Icon">
+            <p>+212 529 80 82 00</p>
+        </div>
+        <div class="contact-item">
+            <img src="ig icon (1).png" alt="ig Icon">
+            <p>@PalaisHotel</p>
+        </div>
+        <div class="contact-item">
+            <img src="email icon (1).png" alt="Email Icon">
+            <p>palais@hotel.com</p>
+        </div>
+    </div>
+     <!--Footer-->
+     <div class="footer">
+      <div class="footer-container">
+          <div class="footer-section">
+              <h5>Get In Touch</h5>
+              <p><i class="fa fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+              <p><i class="fa fa-phone-alt"></i> +012 345 67890</p>
+              <p><i class="fa fa-envelope"></i> info@example.com</p>
+              <div class="social-media">
+                  <a class="social-btn" href=""><i class="fab fa-twitter"></i></a>
+                  <a class="social-btn" href=""><i class="fab fa-facebook-f"></i></a>
+                  <a class="social-btn" href=""><i class="fab fa-youtube"></i></a>
+                  <a class="social-btn" href=""><i class="fab fa-linkedin-in"></i></a>
+              </div>
+          </div>
+          <div class="footer-section">
+              <h5>Liens</h5>
+              <a class="footer-link" href="index.html#bgservices">Notre Hotel</a>
+              <a class="footer-link" href="index.html#bgpro">Actualités</a>
+              <a class="footer-link" href="index.html#contact-section">Contact</a>
+              <a class="footer-link" href="about.html">Services</a>
+          </div>
+          
+          <div class="footer-section">
+              <h5>Newsletter</h5>
+              <p>Inscrivez-vous pour des mises à jour.</p>
+              <div class="newsletter">
+                  <input type="text" placeholder="Votre email">
+                  <button type="button">S'inscrire</button>
+              </div>
+          </div>
+      </div>
+      <div class="copyright">
+          <p>&copy; Tous droits réservés. Conçu par <a href="https://PALAIS_REVES.com">PALAIS_REVES</a></p>
+          <div class="footer-menu">
+              <a href="">Home</a>
+              <a href="">Cookies</a>
+              <a href="">Help</a>
+              <a href="">FQAs</a>
+          </div>
+      </div>
+  </div>
+</body>
+</html>

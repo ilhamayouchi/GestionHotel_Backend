@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="foot&nav.css">
+    <title>Réservation Royal Mansour</title>
+    <style>
+        :root {
+            --primary-color: #852929;
+            --primary-light: #a33333;
+            --primary-dark: #672020;
+            --primary-hover: #993333;
+            --gold: #c5a47e;
+            --cream: #f5f5f0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Utiliser toute la hauteur de la page */
+        }
+
+        .container {
+            flex: 1; /* Prendre l'espace restant */
+            width: 100%; /* Prendre toute la largeur */
+            max-width: 800px; /* Largeur maximale pour le conteneur */
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: auto; /* Centrer le conteneur */
+        }
+
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar .step {
+            width: 24%;
+            text-align: center;
+            position: relative;
+            padding: 10px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .progress-bar .step.active {
+            border-bottom: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-top: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%; /* Boutons prennent toute la largeur */
+        }
+
+        button.previous-step {
+            background-color: var(--primary-dark);
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        input[type="date"],
+        input[type="number"],
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        nav {
+            background-color: #fff; /* Couleur de fond de la navbar */
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #852929; /* Couleur du texte */
+            font-weight: bold;
+        }
+
+        .footer {
+            background-color: var(--gold); /* Couleur de fond */
+            color: white; /* Couleur du texte */
+            padding: 10px 0; /* Espacement vertical réduit */
+        }
+
+        .footer-container {
+            display: flex; /* Disposition en flex */
+            justify-content: space-between; /* Espacement entre les sections */
+            flex-wrap: wrap; /* Permet aux sections de passer à la ligne si besoin */
+            max-width: 1200px; /* Largeur maximale */
+            margin: 0 auto; /* Centrer le conteneur */
+        }
+
+        .footer-section {
+            flex: 1; /* Chaque section prend un espace égal */
+            padding: 5px; /* Espacement interne réduit */
+            min-width: 150px; /* Largeur minimale réduite */
+        }
+
+        .footer-section h5 {
+            font-size: 1.1em; /* Taille de la police des titres réduite */
+            margin-bottom: 5px; /* Espacement sous les titres réduit */
+        }
+
+        .footer-section p, .footer-section a {
+            margin-bottom: 3px; /* Espacement sous les paragraphes et liens réduit */
+            color: white; /* Couleur des textes */
+            text-decoration: none; /* Pas de soulignement */
+        }
+
+        .footer-link:hover {
+            text-decoration: underline; /* Soulignement au survol */
+        }
+
+        .social-media {
+            margin-top: 5px; /* Espacement au-dessus des icônes réduit */
+        }
+
+        .social-btn {
+            margin-right: 5px; /* Espacement entre les icônes réduit */
+            color: white; /* Couleur des icônes */
+            font-size: 18px; /* Taille des icônes réduite */
+        }
+
+        .newsletter {
+            display: flex; /* Disposition en flex pour le formulaire */
+        }
+
+        .newsletter input {
+            flex: 1; /* Prendre l'espace restant */
+            padding: 3px; /* Espacement interne réduit */
+            border: none; /* Pas de bordure */
+            border-radius: 5px 0 0 5px; /* Coins arrondis */
+        }
+
+        .newsletter button {
+            padding: 3px 8px; /* Espacement interne réduit */
+            background-color: var(--primary-light); /* Couleur de fond du bouton */
+            border: none; /* Pas de bordure */
+            border-radius: 0 5px 5px 0; /* Coins arrondis */
+            cursor: pointer; /* Changer le curseur au survol */
+        }
+
+        .newsletter button:hover {
+            background-color: var(--primary-color); /* Couleur au survol */
+        }
+
+        .copyright {
+            text-align: center; /* Centrer le texte */
+            padding: 5px 0; /* Espacement vertical réduit */
+            border-top: 1px solid white; /* Bordure supérieure */
+            margin-top: 5px; /* Espacement au-dessus réduit */
+        }
+
+        .footer-menu {
+            margin-top: 5px; /* Espacement au-dessus du menu réduit */
+        }
+
+        .footer-menu a {
+            color: white; /* Couleur des liens */
+            margin: 0 5px; /* Espacement horizontal réduit */
+            text-decoration: none; /* Pas de soulignement */
+        }
+
+        .footer-menu a:hover {
+            text-decoration: underline; /* Soulignement au survol */
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column; /* Disposition en colonne sur mobile */
+                align-items: center; /* Centrer les éléments */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-container">
+            <div class="icon p-2 me-2">
+                <img class="img-fluid" src="PALIAS HOTEL.png" alt="Icon" style="width: 70px; height: 70px;">
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="hébergement.html">HÉBERGEMENT</a></li>
+                <li><a href="#">SERVICES</a></li>
+                <li><a href="gallerie.html">GALLERIE</a></li>
+                <li><a href="events.html">ÉVÉNEMENT ÉXCLUSIF</a></li>
+                <li><a href="inscription.html">CONNEXION</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="progress-bar">
+            <div class="step active">1. Calendrier</div>
+            <div class="step">2. Sélection de Riad et de Tarif</div>
+            <div class="step">3. Améliorations et Détails</div>
+            <div class="step">4. Confirmation</div>
+        </div>
+        <form id="reservationForm">
+            <!-- Step 1: Calendar -->
+            <div class="form-step active">
+                <h2>Calendrier</h2>
+                <label for="startDate">Date d'arrivée:</label>
+                <input type="date" id="startDate" required>
+                <label for="endDate">Date de départ:</label>
+                <input type="date" id="endDate" required>
+                <button type="button" class="next-step">Suivant</button>
+            </div>
+            <!-- Step 2: Selection -->
+            <div class="form-step">
+                <h2>Sélection de Riad et de Tarif</h2>
+                <label for="hebergement">Type d'hébergement:</label>
+                <select id="hebergement" required>
+                    <option value="villa">Villa</option>
+                    <option value="chambre">Chambre</option>
+                    <option value="suite">Suite</option>
+                </select>
+                <label for="adults">Nombre d'adultes:</label>
+                <input type="number" id="adults" min="1" required>
+                <label for="children">Nombre d'enfants:</label>
+                <input type="number" id="children" min="0">
+                <button type="button" class="previous-step">Précédent</button>
+                <button type="button" class="next-step">Suivant</button>
+            </div>
+            <!-- Step 3: Details -->
+            <div class="form-step">
+                <h2>Améliorations et Détails</h2>
+                <p>Date d'arrivée: <span id="summaryStartDate"></span></p>
+                <p>Date de départ: <span id="summaryEndDate"></span></p>
+                <p>Type d'hébergement: <span id="summaryHebergement"></span></p>
+                <p>Nombre d'adultes: <span id="summaryAdults"></span></p>
+                <p>Nombre d'enfants: <span id="summaryChildren"></span></p>
+                <p>Total en DH: <span id="summaryTotal"></span></p>
+                <button type="button" class="previous-step">Précédent</button>
+                <button type="button" class="next-step">Suivant</button>
+            </div>
+            <!-- Step 4: Payment -->
+            <div class="form-step">
+                <h2>Confirmation et Paiement</h2>
+                <label for="cardNumber">Numéro de carte:</label>
+                <input type="text" id="cardNumber" required>
+                <label for="cardName">Nom sur la carte:</label>
+                <input type="text" id="cardName" required>
+                <label for="expiryDate">Date d'expiration:</label>
+                <input type="text" id="expiryDate" placeholder="MM/AA" required>
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" required>
+                <button type="button" class="previous-step">Précédent</button>
+                <button type="submit">Confirmer</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h5>Get In Touch</h5>
+                <p><i class="fa fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+                <p><i class="fa fa-phone-alt"></i> +012 345 67890</p>
+                <p><i class="fa fa-envelope"></i> info@example.com</p>
+                <div class="social-media">
+                    <a class="social-btn" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="social-btn" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="social-btn" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="social-btn" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h5>Liens</h5>
+                <a class="footer-link" href="index.html#bgservices">Notre Hotel</a>
+                <a class="footer-link" href="index.html#bgpro">Actualités</a>
+                <a class="footer-link" href="index.html#contact-section">Contact</a>
+                <a class="footer-link" href="about.html">Services</a>
+            </div>
+            
+            <div class="footer-section">
+                <h5>Newsletter</h5>
+                <p>Inscrivez-vous pour des mises à jour.</p>
+                <div class="newsletter">
+                    <input type="text" placeholder="Votre email">
+                    <button type="button">S'inscrire</button>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; Tous droits réservés. Conçu par <a href="https://PALAIS_REVES.com">PALAIS_REVES</a></p>
+            <div class="footer-menu">
+                <a href="">Home</a>
+                <a href="">Cookies</a>
+                <a href="">Help</a>
+                <a href="">FQAs</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('reservationForm');
+            const formSteps = Array.from(document.querySelectorAll('.form-step'));
+            const nextStepButtons = document.querySelectorAll('.next-step');
+            const previousStepButtons = document.querySelectorAll('.previous-step');
+            let currentStep = 0;
+
+            nextStepButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const currentFormStep = formSteps[currentStep];
+                    const inputs = currentFormStep.querySelectorAll('input, select');
+                    let allValid = true;
+                    inputs.forEach(input => {
+                        if (!input.checkValidity()) {
+                            allValid = false;
+                        }
+                    });
+                    if (allValid) {
+                        goToStep(currentStep + 1);
+                    } else {
+                        currentFormStep.reportValidity();
+                    }
+                });
+            });
+
+            previousStepButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    goToStep(currentStep - 1);
+                });
+            });
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                alert('Réservation confirmée!');
+            });
+
+            function goToStep(step) {
+                formSteps[currentStep].classList.remove('active');
+                currentStep = step;
+                formSteps[currentStep].classList.add('active');
+                updateProgressBar();
+                if (currentStep === 2) {
+                    updateSummary();
+                }
+            }
+
+            function updateProgressBar() {
+                const steps = document.querySelectorAll('.progress-bar .step');
+                steps.forEach((step, index) => {
+                    if (index <= currentStep) {
+                        step.classList.add('active');
+                    } else {
+                        step.classList.remove('active');
+                    }
+                });
+            }
+
+            function updateSummary() {
+                document.getElementById('summaryStartDate').textContent = document.getElementById('startDate').value;
+                document.getElementById('summaryEndDate').textContent = document.getElementById('endDate').value;
+                document.getElementById('summaryHebergement').textContent = document.getElementById('hebergement').value;
+                document.getElementById('summaryAdults').textContent = document.getElementById('adults').value;
+                document.getElementById('summaryChildren').textContent = document.getElementById('children').value;
+                document.getElementById('summaryTotal').textContent = calculateTotal();
+            }
+
+            function calculateTotal() {
+                const hebergement = document.getElementById('hebergement').value;
+                const adults = parseInt(document.getElementById('adults').value, 10);
+                const children = parseInt(document.getElementById('children').value, 10);
+
+                let basePrice = 0;
+                if (hebergement === 'villa') basePrice = 2000;
+                else if (hebergement === 'chambre') basePrice = 1000;
+                else if (hebergement === 'suite') basePrice = 1500;
+
+                return basePrice * (adults + (children * 0.5));
+            }
+
+            // Initial call to show the first step
+            goToStep(0);
+        });
+    </script>
+</body>
+</html>

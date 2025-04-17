@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>PALAIS REVES- Site d'hotel</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="/Views/assets/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/Views/assets/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/Views/assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/Views/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/Views/assets/css/style.css" rel="stylesheet">
+    <style>
+     .navbar {
+    margin: 0;
+    padding: 0;
+}
+    .navbar {
+        transition: background-color 0.3s ease, padding 0.3s ease;
+        z-index: 1030; 
+    }
+
+    .navbar.scrolled {
+       
+        padding: 1rem 2rem;
+    }
+
+    .nav-item.nav-link {
+        transition: color 0.3s ease;
+        
+    }
+
+    
+    .shadow {
+        box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+    }
+
+    body {
+    padding-top: 70px; /* Gardez cet espacement pour éviter que le contenu soit caché */
+}
+
+.container-fluid {
+    margin-top: 0; /* Assurez-vous qu'il n'y a pas d'espace supplémentaire */
+    padding: 0; /* Assurez-vous qu'il n'y a pas de rembourrage supplémentaire */
+}
+    .services-section {
+        text-align: center;
+        padding: 20px;
+    }
+    
+    h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .services-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 20px; /* Espacement entre les éléments */
+        border-top: 2px solid #ccc; /* Ligne au-dessus */
+        padding-top: 20px;
+    }
+    
+    .service-item {
+        text-align: center;
+        padding: 10px;
+        flex: 1 1 calc(33% - 40px); /* Trois éléments par ligne */
+        max-width: 200px; /* Limite la largeur */
+        border-right: 1px solid #ccc; /* Ligne de séparation */
+    }
+    
+    .service-item:last-child {
+        border-right: none; /* Supprime la ligne du dernier élément */
+    }
+    
+    .service-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+    /* Section Informations */
+.info-section {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 2px solid #ccc;
+}
+
+.info-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.info-item {
+    text-align: left;
+    flex: 1 1 calc(50% - 40px);
+    max-width: 400px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.info-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.info-item p {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #444;
+}
+
+.info-details {
+    text-align: left;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.info-details h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.info-details p {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #000000;
+}
+.modal {
+        z-index: 1050; /* Assurez-vous qu'il est au-dessus de la navbar */
+        position: fixed; /* Pour qu'il reste en haut */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Centrer le pop-up */
+        background-color: white; /* Fond blanc */
+        padding: 20px; /* Espacement intérieur */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre */
+        width: 300px; /* Largeur du pop-up */
+        display: none; /* Masquer par défaut, à afficher avec JS */
+    }
+
+    .modal-content {
+        position: relative; /* Pour le positionnement */
+        padding: 20px; /* Espacement intérieur */
+    }
+
+
+</style>    
+</head>
+
+<body>
+    
+    <div class="container-xxl bg-white p-0">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow py-lg-3">
+            <div class="container">
+                <a href="index.html" class="navbar-brand d-flex align-items-center">
+                    <div class="icon p-2 me-2">
+                        <img class="img-fluid" src="/Views/img/PALIAS HOTEL.png" alt="Icon" style="width: 70px; height: 70px;">
+                    </div>
+                    
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-3 py-lg-0">
+                        <a href="index.html" class="nav-item nav-link ">Home</a>
+                        <a href="index.html" class="nav-item nav-link ">Hébergement</a>
+                        <a href="about.html" class="nav-item nav-link active">Services</a>
+                        <a href="index.html" class="nav-item nav-link ">Gallerie</a>
+                        <a href="index.html" class="nav-item nav-link ">Evénements Exclusif</a>
+                        <a href="index.html#contact-section" class="nav-item nav-link">Contact</a>
+                        <a  href="inscription.html" class="nav-item nav-link">Connexion</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+        <!-- Navbar End -->
+    </div>
+    <script>
+        // Changer l'apparence de la navbar en fonction du défilement
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+    
+    <div class="hero-section position-relative" style="background-image: url('receptionists-5975962_1280.jpg'); background-size: cover; height: 35rem;">
+        <div class="position-absolute bottom-0 start-50 translate-middle-x pb-4">
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+                <a href="/Views/restaurant.html" class="btn btn-primary px-4">Restaurant</a>
+                <a href="/Views/spa.html" class="btn btn-primary px-4">Spa</a>
+                <a href="/Views/piscine.html" class="btn btn-primary px-4">Piscine</a>
+                <a href="/Views/gym.html" class="btn btn-primary px-4">Salle de fitness</a>
+            </div>
+        </div>
+    </div>
+
+<div id="bgservices" >
+            <div class="container">
+                <div class="text-center ">
+                   <br> <h2 class="display-6">Nos services</h2>
+                    <div class="services-section">
+                        <div class="row g-4 services-grid">
+                            <div class="col-md-2">
+                                <div class="service-item text-center">
+                                    <img src="/Views/img/icons8-spa-50.png" alt="SPA" class="service-icon">
+                                    <p>SPA</p>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="service-item text-center">
+                                    <img src="/Views/img/icons8-gym-50.png" alt="Salle de Fitness" class="service-icon">
+                                    <p>SALLE DE FITNESS</p>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="service-item text-center">
+                                    <img src="/Views/img/icons8-restaurant-50.png" alt="Restaurant" class="service-icon">
+                                    <p>RESTAURANT</p>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="service-item text-center">
+                                    <img src="/Views/img/icons8-hotline-50.png" alt="Réception 24/7" class="service-icon">
+                                    <p>RÉCEPTION 24/7</p>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="service-item text-center">
+                                    <img src="/Views/img/icons8-swimming-pool-50.png" alt="Piscines Extérieures" class="service-icon">
+                                    <p>PISCINES</p>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="service-item text-center">
+                                    <img src="/Views/img/icons8-parking-50.png" alt="Parking Gratuit" class="service-icon">
+                                    <p>PARKING GRATUIT</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>  
+</div>
+
+       
+        
+          <div id="info-section">
+            <div id="bgservices" class="container-xxl py-5 ">
+                <div id="bgservices" class=" rounded p-3">
+                    <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 0, 0, 0.3)">
+                        <div class="container">
+                            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                                <h2 class="display-6">Informations sur nos horaires et tarifs</h2>
+                            </div>
+                            <div class="row g-4">
+                                <div class="col-md-4">
+                                    <div class="info-item d-flex flex-column h-100">
+                                        <h3>Horaires d'ouverture</h3>
+                                        <p><strong>Spa :</strong> Lundi au Vendredi : 9h - 21h</p>
+                                        <p><strong>Salle de Fitness :</strong> Lundi au Dimanche : 6h - 23h</p>
+                                        <p><strong>Restaurant :</strong> Tous les jours : 12h - 22h</p>
+                                        <p><strong>Piscines :</strong> Lundi au Dimanche : 8h - 20h</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="info-item d-flex flex-column h-100">
+                                        <h3>Tarifs</h3>
+                                        <p><strong>Séance SPA :</strong> 500 DH (30 min) / 800 dh (1h)</p>
+                                        <p><strong>Accès Salle de Fitness :</strong> 150 DH / jour ou 1000 DH / mois</p>
+                                        <p><strong>Menu Restaurant :</strong> à partir de 150 DH (menu standard)</p>
+                                        <p><strong>Accès Piscines :</strong> Inclus pour les clients ou 200 DH / jour pour les visiteurs externes</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="info-item d-flex flex-column h-100">
+                                        <h3>Services supplémentaires</h3>
+                                        <p>- Massage personnalisé au SPA : 500 DH / heure</p>
+                                        <p>- Coaching privé en salle de fitness : 400 DH/ session</p>
+                                        <p>- Réservation pour événements spéciaux au restaurant (anniversaires, dîners d'affaires) : sur demande</p>
+                                        <p>- Cours de natation : 300 DH / session</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="promotions">
+            <div id="bgservices" class="container-xxl py-5">
+                <div id="bgservices" class=" rounded p-3">
+                    <div class="bg-white rounded p-4"   style="border: 1px dashed rgba(231, 223, 223, 0.3)">
+                        <div class="container">
+                            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                                <h2 class="display-6">Promotions et Offres Spéciales</h2>
+                            </div>
+                           <p >Profitez de nos offres exceptionnelles et forfaits saisonniers !</p>
+            
+                           <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="info-item d-flex flex-column h-100">
+                                    <h3>Promo Été</h3>
+                                    <p>Économisez jusqu'à 30% sur nos forfaits d'été.</p>
+                                    <p><strong>Valable jusqu'au 31 août.</strong></p>
+                                    <a href="#" class="btn btn-sm btn-info" onclick="showPopup('Promo Été', 'Profitez de notre offre estivale exclusive et économisez jusqu\'à 30% sur nos forfaits d\'été. Cette promotion inclut : accès illimité à nos installations, petit-déjeuner gratuit, et des activités organisées. Réservez dès maintenant pour garantir votre place ! Valable jusqu\'au 31 août.', 'https://www.lien-de-reservation.com ')">En savoir plus</a>
+                </div>
+            </div>
+        
+                <div class="col-md-4">
+                    <div class="info-item d-flex flex-column h-100">
+                    <h3 >Offre Week-end</h3>
+                    <p>Réservez un week-end et bénéficiez d'une nuit gratuite !</p>
+                    <p><strong>Offre valable tous les week-ends.</strong></p>
+                    <a href="http://127.0.0.1:5501/Reservation.html" class="btn btn-sm btn-primary">Réserver maintenant</a>
+                </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-item d-flex flex-column h-100">
+                    <h3 >Forfait Famille</h3>
+                    <p>Des tarifs spéciaux pour les familles de 4 personnes ou plus.</p>
+                    <p><strong>Valable toute l'année.</strong></p>
+                    <a href="http://127.0.0.1:5501/Reservation.html" class="btn btn-sm btn-secondary" onclick="showFamilyPopup()">Découvrir l'offre</a>
+                    </div>
+                </div>
+            </div>
+        
+            <br><p >Ne manquez pas ces occasions uniques pour profiter de nos services à prix réduit !</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="model" id="familyPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; justify-content:center; align-items:center;">
+            <div style="background:white; padding:20px; border-radius:10px; width:400px; text-align:center;">
+                <img src="hotel 1.jpg" alt="Hotel" style="width:100%; height:auto; border-radius: 8px; margin-bottom: 15px;">
+                <h2>Forfait Famille</h2>
+                <p>Profitez de notre forfait famille : des tarifs réduits pour les familles de 4 personnes ou plus. Inclus : chambres spacieuses, repas gratuits pour les enfants, et activités familiales.</p>
+                <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+                    <button onclick="window.location.href='http://127.0.0.1:5501/Reservation.html';" style="background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Réserver maintenant</button>
+                    <button onclick="closeFamilyPopup()" style="background: #007BFF; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">Fermer</button>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            function showFamilyPopup() {
+                document.getElementById('familyPopup').style.display = 'flex';
+                document.getElementById('.navbar').style.display = 'none';
+            }
+        
+            function closeFamilyPopup() {
+                document.getElementById('familyPopup').style.display = 'none';
+                document.getElementById('.navbar').style.display = 'block'; // Afficher la navbar
+            }
+        </script>
+        <!-- Popup Modal -->
+<div id="popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; justify-content:center; align-items:center;">
+    <div style="background:white; padding:20px; border-radius:10px; width:400px; text-align:center;">
+        
+        <h2 id="popupTitle"></h2>
+        <p id="popupContent"></p>
+        <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+            <button id="reservationButton" style="display:none; background: #28a745; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;" onclick="window.location.href='';">Réserver maintenant</button>
+            <button onclick="closePopup()" style="background: #007BFF; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">Fermer</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showPopup(title,  content, reservationLink) {
+        document.getElementById('popupTitle').innerText = title;
+        document.getElementById('popupContent').innerText = content;
+        document.getElementById('reservationButton').style.display = 'block';
+        document.getElementById('reservationButton').onclick = function() {
+            window.location.href = reservationLink;
+        };
+        document.getElementById('popup').style.display = 'flex';
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+        document.getElementById('reservationButton').style.display = 'none'; // Hide button when closing the popup
+    }
+</script>
+        <!-- Footer Start -->
+        <div class="container-fluid   footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Get In Touch</h5>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4"> Liens</h5>
+                        <a  class="btn btn-link" href="index.html#bgservices">Notre Hotel</a>
+                        <a  class="btn btn-link" href="index.html#bgpro">Actualités</a>
+                        <a class="btn btn-link" href="index.html#contact-section">Contact </a>
+                        <a class="btn btn-link" href="about.html">Services</a>
+                        
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Photo Gallery</h5>
+                        <div class="row g-2 pt-2">
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="hotel 1.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="bali-2975787_1280.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="hotel 6.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="3D Model Interior Restaurant 80 Scenes File 3dsmax By Phuong Ha.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="res.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/property-6.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Newsletter</h5>
+                        <p>Une zone pour connecter directement .</p>
+                        <div class="position-relative mx-auto" style="max-width: 400px;">
+                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <a class="border-bottom" href="#"></a> All Right Reserved. 
+							
+							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+							Designed By <a class="border-bottom" href="https://PALAIS_REVES.com">PALAIS_REVES</a>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <div class="footer-menu">
+                                <a href="">Home</a>
+                                <a href="">Cookies</a>
+                                <a href="">Help</a>
+                                <a href="">FQAs</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

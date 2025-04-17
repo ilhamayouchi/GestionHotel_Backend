@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire d'inscription | PALIS HOTEL Marrakech</title>
+  <link rel="stylesheet" href="demande.css">
+  <link rel="stylesheet" href="foot&nav.css">
+  <style>
+    :root {
+      --primary-color: #852929; 
+      --primary-light: #a33434; 
+      --gold: #c5a47e; 
+      --cream: #f5f5f0; 
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: var(--cream);
+      margin: 0;
+      padding: 0;
+    }
+
+    .title-section {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .title-section h1 {
+      color: var(--primary-color);
+    }
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .description {
+      flex: 1;
+      margin-right: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .description p {
+      line-height: 1.6;
+      color: #000; 
+    }
+
+    .container {
+      flex: 1;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .title {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+
+    .user-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .input-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-box span {
+      margin-bottom: 5px;
+      color: var(--primary-color);
+    }
+
+    .input-box input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .button {
+      margin-top: 20px;
+    }
+
+    .button input {
+      padding: 10px 20px;
+      border: none;
+      background-color: var(--primary-color);
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .button input:hover {
+      background-color: var(--primary-light);
+    }
+
+    footer {
+      background-color: var(--cream);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .footer-section h4 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin: 5px 0;
+    }
+
+    .footer-section ul li a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .footer-section ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .newsletter input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+    }
+
+    .newsletter button {
+      padding: 10px 15px;
+      border: none;
+      background-color: var(--primary-color);
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .newsletter button:hover {
+      background-color: var(--primary-light);
+    }
+
+    .logo-container img {
+      width: 150px;
+      margin-top: 20px;
+    }
+    nav {
+            background-color: #fff; 
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links li a {
+            text-decoration: none;
+            color: #852929; 
+            font-weight: bold;
+        }
+        :root {
+    --primary-color: #852929;  
+    --primary-light: #a33434;  
+    --gold: #c5a47e;           
+    --cream: #f5f5f0;           
+}
+
+.footer {
+    background-color: var(--gold); 
+    color: white; 
+    padding: 10px 0; 
+}
+
+.footer-container {
+    display: flex; 
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+.footer-section {
+    flex: 1; 
+    padding: 5px; 
+    min-width: 150px; 
+}
+
+.footer-section h5 {
+    font-size: 1.1em; 
+    margin-bottom: 5px; 
+}
+
+.footer-section p, .footer-section a {
+    margin-bottom: 3px; /* Espacement sous les paragraphes et liens réduit */
+    color: white; /* Couleur des textes */
+    text-decoration: none; /* Pas de soulignement */
+}
+
+.footer-link:hover {
+    text-decoration: underline; /* Soulignement au survol */
+}
+
+.social-media {
+    margin-top: 5px; /* Espacement au-dessus des icônes réduit */
+}
+
+.social-btn {
+    margin-right: 5px; /* Espacement entre les icônes réduit */
+    color: white; /* Couleur des icônes */
+    font-size: 18px; /* Taille des icônes réduite */
+}
+
+.gallery {
+    display: flex; /* Disposition en flex pour les images */
+    flex-wrap: wrap; /* Permet aux images de passer à la ligne */
+    justify-content: space-between; /* Espacement entre les images */
+}
+
+.gallery img {
+    width: 30%; /* Largeur des images */
+    margin-bottom: 10px; /* Espacement en bas */
+    border-radius: 5px; /* Coins arrondis */
+}
+
+.newsletter {
+    display: flex; /* Disposition en flex pour le formulaire */
+}
+
+.newsletter input {
+    flex: 1; /* Prendre l'espace restant */
+    padding: 3px; /* Espacement interne réduit */
+    border: none; /* Pas de bordure */
+    border-radius: 5px 0 0 5px; /* Coins arrondis */
+}
+
+.newsletter button {
+    padding: 3px 8px; /* Espacement interne réduit */
+    background-color: var(--primary-light); /* Couleur de fond du bouton */
+    border: none; /* Pas de bordure */
+    border-radius: 0 5px 5px 0; /* Coins arrondis */
+    cursor: pointer; /* Changer le curseur au survol */
+}
+
+.newsletter button:hover {
+    background-color: var(--primary-color); /* Couleur au survol */
+}
+
+.copyright {
+    text-align: center; /* Centrer le texte */
+    padding: 5px 0; /* Espacement vertical réduit */
+    border-top: 1px solid white; /* Bordure supérieure */
+    margin-top: 5px; /* Espacement au-dessus réduit */
+}
+
+.footer-menu {
+    margin-top: 5px; /* Espacement au-dessus du menu réduit */
+}
+
+.footer-menu a {
+    color: white; /* Couleur des liens */
+    margin: 0 5px; /* Espacement horizontal réduit */
+    text-decoration: none; /* Pas de soulignement */
+}
+
+.footer-menu a:hover {
+    text-decoration: underline; /* Soulignement au survol */
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Disposition en colonne sur mobile */
+        align-items: center; /* Centrer les éléments */
+    }
+    
+    .gallery img {
+        width: 80%; /* Largeur des images sur mobile */
+    }
+    
+    .newsletter {
+        flex-direction: column; /* Disposition en colonne pour le formulaire */
+    }
+    
+    .newsletter input {
+        margin-bottom: 5px; /* Espacement en bas réduit */
+        width: 100%; 
+    }
+}
+  </style>
+</head>
+<body>
+
+   <!-- Navbar -->
+   <nav>
+    <div class="nav-container">
+        <div class="icon p-2 me-2">
+            <img class="img-fluid" src="PALIAS HOTEL.png" alt="Icon" style="width: 70px; height: 70px;">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="hébergement.html">HÉBERGEMENT</a></li>
+            <li><a href="#">SERVICES</a></li>
+            <li><a href="gallerie.html">GALLERIE</a></li>
+            <li><a href="events.html">ÉVÉNEMENT ÉXCLUSIF</a></li>
+            <li><a href="inscription.html">CONNEXION</a></li>
+        </ul>
+    </div>
+</nav>
+    <div class="title-section">
+        <h1>PALIS HOTEL Marrakech</h1>
+        <h3>Remplissez le formulaire et commencez à organiser votre événement à Marrakech</h3>
+    </div>
+    
+    <div class="content">
+        <!-- Section des paragraphes -->
+        <div class="description">
+          <p>
+            Notre hôtel de luxe vous propose un service personnalisé pour organiser vos événements exclusifs. Ce formulaire a été conçu pour recueillir toutes les informations nécessaires afin de créer une expérience unique et mémorable. Il comprend des sections pour vos informations personnelles (contact, email, téléphone), les détails de l'événement (type, date, nombre d'invités, nombre de chambres nécessaires) ainsi qu’un espace pour décrire vos attentes spécifiques.
+          </p>
+          <p>
+            En remplissant ce formulaire, vous nous permettez de préparer une proposition sur mesure qui reflète l’élégance et le raffinement de notre établissement. Chaque détail compte, alors n’oubliez pas de remplir les champs marqués d’un astérisque (*).
+          </p>
+        </div>
+
+        <div class="container">
+            <!-- Title section -->
+            <div class="title">Inscription</div>
+            <!-- Registration form -->
+            <form action="#">
+                <div class="user-details">
+                    <!-- Input for Full Name -->
+                    <div class="input-box">
+                        <span class="details">Nom Complet</span>
+                        <input type="text" placeholder="Entrez votre nom" required>
+                    </div>
+                    <!-- Input for Username -->
+                    <div class="input-box">
+                        <span class="details">Nom d'utilisateur</span>
+                        <input type="text" placeholder="Entrez votre nom d'utilisateur" required>
+                    </div>
+                    <!-- Input for Email -->
+                    <div class="input-box">
+                        <span class="details">Email</span>
+                        <input type="email" placeholder="Entrez votre email" required>
+                    </div>
+                    <!-- Input for Phone Number -->
+                    <div class="input-box">
+                        <span class="details">Numéro de Téléphone</span>
+                        <input type="tel" placeholder="Entrez votre numéro" required>
+                    </div>
+                </div>
+
+                <div class="title">Détails de l'évènement</div>
+
+                <div class="user-details">
+                    <!-- Input for Event Name -->
+                    <div class="input-box">
+                        <span class="details">Évènement*</span>
+                        <input type="text" placeholder="Entrez le nom de l'événement" required>
+                    </div>
+                    <!-- Input for Date -->
+                    <div class="input-box">
+                        <span class="details">Date *</span>
+                        <input type="date" required>
+                    </div>
+                    <!-- Input for Number of Guests -->
+                    <div class="input-box">
+                        <span class="details">Nombre d'invités*</span>
+                        <input type="number" placeholder="Entrez le nombre d'invités" required>
+                    </div>
+                    <!-- Input for Number of Rooms -->
+                    <div class="input-box">
+                        <span class="details">Nombre de chambres*</span>
+                        <input type="number" placeholder="Entrez le nombre de chambres" required>
+                    </div>
+                    <!-- Input for Description -->
+                    <div class="input-box">
+                        <span class="details">Description</span>
+                        <input type="text" placeholder="Entrez votre description" required>
+                    </div>
+                </div>
+
+                <div class="gender-details">
+                    <!-- Checkbox for Acceptance -->
+                    <input type="checkbox" id="accept" required>
+                    <label for="accept" class="accept-label">
+                        J'accepte que ce site web stocke les informations que j'ai soumises afin qu'il puisse répondre à ma demande.
+                    </label>
+                </div>
+
+                <!-- Submit button -->
+                <div class="button">
+                    <input type="submit" value="Envoyer">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <div class="footer">
+      <div class="footer-container">
+          <div class="footer-section">
+              <h5>Get In Touch</h5>
+              <p><i class="fa fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+              <p><i class="fa fa-phone-alt"></i> +012 345 67890</p>
+              <p><i class="fa fa-envelope"></i> info@example.com</p>
+              <div class="social-media">
+                  <a class="social-btn" href=""><i class="fab fa-twitter"></i></a>
+                  <a class="social-btn" href=""><i class="fab fa-facebook-f"></i></a>
+                  <a class="social-btn" href=""><i class="fab fa-youtube"></i></a>
+                  <a class="social-btn" href=""><i class="fab fa-linkedin-in"></i></a>
+              </div>
+          </div>
+          <div class="footer-section">
+              <h5>Liens</h5>
+              <a class="footer-link" href="index.html#bgservices">Notre Hotel</a>
+              <a class="footer-link" href="index.html#bgpro">Actualités</a>
+              <a class="footer-link" href="index.html#contact-section">Contact</a>
+              <a class="footer-link" href="about.html">Services</a>
+          </div>
+          
+          <div class="footer-section">
+              <h5>Newsletter</h5>
+              <p>Inscrivez-vous pour des mises à jour.</p>
+              <div class="newsletter">
+                  <input type="text" placeholder="Votre email">
+                  <button type="button">S'inscrire</button>
+              </div>
+          </div>
+      </div>
+      <div class="copyright">
+          <p>&copy; Tous droits réservés. Conçu par <a href="https://PALAIS_REVES.com">PALAIS_REVES</a></p>
+          <div class="footer-menu">
+              <a href="">Home</a>
+              <a href="">Cookies</a>
+              <a href="">Help</a>
+              <a href="">FQAs</a>
+          </div>
+      </div>
+  </div>
+</body>
+</html>

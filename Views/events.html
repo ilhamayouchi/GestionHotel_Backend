@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPA</title>
+    <link rel="stylesheet" href="event.css">
+    <style>
+      *{
+        font-family: 'Times New Roman', Times, serif;
+      }
+        
+        :root {
+            --primary-color: #852929;
+            --primary-light: #a33434;
+            --gold: #c5a47e;
+            --cream: #f5f5f0;
+        }
+
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--cream); 
+        }
+
+        h1 {
+            margin-bottom: 2rem; 
+        }
+
+        h2 {
+            margin-bottom: 1.5rem; 
+            margin-top: 1.5rem; 
+        }
+
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        
+        .rituels-button {
+            margin: 2rem 0 0.5rem 0; 
+            display: inline-block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            background-color: var(--gold);
+            color: #fff; 
+            border-radius: 5px; 
+            transition: background-color 0.3s ease;
+        }
+
+        .rituels-button:hover {
+            background-color: var(--primary-light); 
+        }
+
+        
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 20px 0;
+        }
+
+        .text-content {
+            flex: 1;
+            padding-right: 20px; 
+        }
+
+        .hammam-image {
+            max-width: 400px; 
+            height: auto;
+            border-radius: 5px;
+        }
+
+        
+        .accordion {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0; 
+        }
+
+        .accordion-button {
+            width: 100%;
+            padding: 15px;
+            text-align: left;
+            background: none;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 15px;
+            border-top: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .accordion-button::after {
+            content: '+';
+            float: right;
+        }
+
+        .accordion-button.active::after {
+            content: '-';
+        }
+
+        .accordion-content p {
+            margin: 0;
+        }
+
+        
+        .gallerie {
+            margin-top: 4rem; 
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            max-width: 1200px;
+        }
+
+        .gallerie img {
+            width: calc(25% - 15px); 
+            height: 200px; 
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallerie img:hover {
+            transform: scale(1.1); 
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); 
+        }
+
+        
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            color: #000; 
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item img {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 8px;
+        }
+
+        .contact-item p {
+            margin: 0;
+        }
+        nav {
+            background-color: #fff; 
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links li a {
+            text-decoration: none;
+            color: #852929; 
+            font-weight: bold;
+        }
+        :root {
+    --primary-color: #852929;  
+    --primary-light: #a33434;  
+    --gold: #c5a47e;            
+    --cream: #f5f5f0;           
+}
+
+.footer {
+    background-color: var(--gold); 
+    color: white; 
+    padding: 10px 0; 
+}
+
+.footer-container {
+    display: flex; 
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+.footer-section {
+    flex: 1; 
+    padding: 5px; 
+    min-width: 150px; 
+}
+
+.footer-section h5 {
+    font-size: 1.1em; 
+    margin-bottom: 5px; 
+}
+
+.footer-section p, .footer-section a {
+    margin-bottom: 3px; 
+    color: white; 
+    text-decoration: none; 
+}
+
+.footer-link:hover {
+    text-decoration: underline; 
+}
+
+.social-media {
+    margin-top: 5px; 
+}
+
+.social-btn {
+    margin-right: 5px; 
+    color: white; 
+    font-size: 18px; 
+}
+
+.gallery {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+}
+
+.gallery img {
+    width: 30%; 
+    margin-bottom: 10px; 
+    border-radius: 5px; 
+}
+
+.newsletter {
+    display: flex; 
+}
+
+.newsletter input {
+    flex: 1; 
+    padding: 3px; 
+    border: none; 
+    border-radius: 5px 0 0 5px; 
+}
+
+.newsletter button {
+    padding: 3px 8px; 
+    background-color: var(--primary-light); 
+    border: none; 
+    border-radius: 0 5px 5px 0; 
+    cursor: pointer; 
+}
+
+.newsletter button:hover {
+    background-color: var(--primary-color); 
+}
+
+.copyright {
+    text-align: center; 
+    padding: 5px 0; 
+    border-top: 1px solid white; 
+    margin-top: 5px; 
+}
+
+.footer-menu {
+    margin-top: 5px; 
+}
+
+.footer-menu a {
+    color: white; 
+    margin: 0 5px; 
+    text-decoration: none; 
+}
+
+.footer-menu a:hover {
+    text-decoration: underline; 
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; 
+        align-items: center; 
+    }
+    
+    .gallery img {
+        width: 80%; 
+    }
+    
+    .newsletter {
+        flex-direction: column; 
+    }
+    
+    .newsletter input {
+        margin-bottom: 5px; 
+        width: 100%; 
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-container">
+            <div class="icon p-2 me-2">
+                <img class="img-fluid" src="PALIAS HOTEL.png" alt="Icon" style="width: 70px; height: 70px;">
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="hébergement.html">HÉBERGEMENT</a></li>
+                <li><a href="#">SERVICES</a></li>
+                <li><a href="gallerie.html">GALLERIE</a></li>
+                <li><a href="events.html">ÉVÉNEMENT ÉXCLUSIF</a></li>
+                <li><a href="inscription.html">CONNEXION</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>VOTRE ÉVÉNEMENT SUR MESURE AU PALAIS MARRAKECH</h1>
+        <h2>LE SCÉNARIO PARFAIT POUR VOS ÉVÉNEMENTS MÉMORABLES</h2>
+        <div class="main-content">
+            <div class="text-content">
+                <p>
+                    Le Palais Marrakech, à la décoration élégante et raffinée ainsi qu'à l'architecture arabo-mauresque, ouvre ses portes à l'organisation d'événements mémorables et offre un cadre idéal pour toutes sortes de célébrations. La particularité de nos espaces intérieurs et extérieurs vous permet d'organiser divers types d'événements : dîners de gala, fêtes d'anniversaire, mariages ou réunions d'affaires.
+                </p>
+                <p>
+                    Un véritable sanctuaire de détente, vous invitant à vous ressourcer et à vous reconnecter avec vous-même. Découvrez le hammam marocain et laissez-vous envelopper par ses bienfaits ancestraux pour une expérience inoubliable de bien-être et de purification.
+                </p>
+                <a class="rituels-button" href="demande.html">DEMANDE DE PROPOSITION</a>
+            </div>
+            <img src="MRK_719_original.jpg" alt="Hammam" class="hammam-image">
+        </div>
+    </div>
+
+    <div class="accordion">
+        <div class="accordion-item">
+            <button class="accordion-button">Événements et mariages</button>
+            <div class="accordion-content">
+                <p>
+                    Une demande en mariage, un anniversaire de mariage ou simplement le plaisir de partager des souvenirs en compagnie sont les ingrédients essentiels du succès, magnifiés par les somptueux décors de notre établissement. Sous l'égide de l'élégance inimitable du Selman, ces moments deviennent des souvenirs inoubliables. Offrez-vous l'audace d'une réception atypique dans les espaces inattendus près des écuries, ou savourez un petit-déjeuner ou un dîner intime avec une prestation exclusive offerte par nos prestigieux pur-sangs, juste sous vos yeux... ou réunissez vos amis autour de notre piscine de 80 mètres pour une réception décontractée, à la hauteur de vos plus beaux moments.
+                </p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-button">Anniversaire</button>
+            <div class="accordion-content">
+                <p>
+                    Une demande en mariage, un anniversaire de mariage ou simplement le plaisir de partager des souvenirs en compagnie sont les ingrédients essentiels du succès, magnifiés par les somptueux décors de notre établissement. Sous l'égide de l'élégance inimitable du Selman, ces moments deviennent des souvenirs inoubliables. Offrez-vous l'audace d'une réception atypique dans les espaces inattendus près des écuries, ou savourez un petit-déjeuner ou un dîner intime avec une prestation exclusive offerte par nos prestigieux pur-sangs, juste sous vos yeux... ou réunissez vos amis autour de notre piscine de 80 mètres pour une réception décontractée, à la hauteur de vos plus beaux moments.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="gallerie">
+        <img src="b98i5807.jpg">
+        <img src="RM-marrakech-gallery-192.jpg">
+        <img src="RM-marrakech-gallery-3.jpg">
+        <img src="RM-marrakech-gallery-191.jpg">
+        <img src="RM-Marrakech-reception-galerie-6.jpg">
+        <img src="RM-marrakech-gallery-25.jpg">
+        <img src="MRK_719_original.jpg">
+    </div>
+
+    <!--Footer-->
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h5>Get In Touch</h5>
+                <p><i class="fa fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+                <p><i class="fa fa-phone-alt"></i> +012 345 67890</p>
+                <p><i class="fa fa-envelope"></i> info@example.com</p>
+                <div class="social-media">
+                    <a class="social-btn" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="social-btn" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="social-btn" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="social-btn" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h5>Liens</h5>
+                <a class="footer-link" href="index.html#bgservices">Notre Hotel</a>
+                <a class="footer-link" href="index.html#bgpro">Actualités</a>
+                <a class="footer-link" href="index.html#contact-section">Contact</a>
+                <a class="footer-link" href="about.html">Services</a>
+            </div>
+            
+            <div class="footer-section">
+                <h5>Newsletter</h5>
+                <p>Inscrivez-vous pour des mises à jour.</p>
+                <div class="newsletter">
+                    <input type="text" placeholder="Votre email">
+                    <button type="button">S'inscrire</button>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; Tous droits réservés. Conçu par <a href="https://PALAIS_REVES.com">PALAIS_REVES</a></p>
+            <div class="footer-menu">
+                <a href="">Home</a>
+                <a href="">Cookies</a>
+                <a href="">Help</a>
+                <a href="">FQAs</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var accordionButtons = document.querySelectorAll(".accordion-button");
+
+            accordionButtons.forEach(function(button) {
+                button.addEventListener("click", function() {
+                    var content = this.nextElementSibling;
+
+                    this.classList.toggle("active");
+
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                    } else {
+                        content.style.display = "block";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

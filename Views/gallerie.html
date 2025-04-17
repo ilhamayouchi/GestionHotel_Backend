@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="foot&nav.css">
+  <title>Galerie d'Images</title>
+  <style>
+    /* Variables de couleur */
+    :root {
+        --primary-color: #852929;
+        --primary-light: #a33434;
+        --gold: #c5a47e;
+        --cream: #f5f5f0;
+    }
+
+    body {
+        font-family: "Lexend", serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--cream);
+    }
+    
+    .gallery-title {
+        text-align: center;
+        padding: 3rem 0;
+        margin-bottom: 2rem;
+    }
+    
+    .gallery-title h1 {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin: 0;
+        padding: 0 20px;
+    }
+    
+    .gallery-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 0 20px 40px 20px;
+    }
+    
+    .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        aspect-ratio: 3/2;
+    }
+    
+    .gallery-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover img {
+        transform: scale(1.05);
+    }
+    
+    @media (max-width: 768px) {
+        .gallery-title h1 {
+            font-size: 2rem;
+        }
+        
+        .gallery-container {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .footer-section {
+        margin-bottom: 20px;
+    }
+
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-section ul li a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .footer-section ul li a:hover {
+        text-decoration: underline;
+    }
+
+    .social-media a {
+        margin: 0 10px;
+    }
+
+    .newsletter input[type="email"] {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        margin-right: 5px;
+    }
+
+    .newsletter button {
+        padding: 10px;
+        background-color: var(--gold);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .newsletter button:hover {
+        background-color: var(--primary-light);
+    }
+
+    .logo-container {
+        margin-top: 20px;
+    }
+    nav {
+            background-color: #fff; /* Couleur de fond de la navbar */
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links li a {
+            text-decoration: none;
+            color: #852929; /* Couleur du texte */
+            font-weight: bold;
+        }
+        :root {
+    --primary-color: #852929;  /* Couleur principale */
+    --primary-light: #a33434;  /* Couleur principale claire */
+    --gold: #c5a47e;            /* Couleur dorée */
+    --cream: #f5f5f0;           /* Couleur crème */
+}
+
+.footer {
+    background-color: var(--gold); /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    padding: 10px 0; /* Espacement vertical réduit */
+}
+
+.footer-container {
+    display: flex; /* Disposition en flex */
+    justify-content: space-between; /* Espacement entre les sections */
+    flex-wrap: wrap; /* Permet aux sections de passer à la ligne si besoin */
+    max-width: 1200px; /* Largeur maximale */
+    margin: 0 auto; /* Centrer le conteneur */
+}
+
+.footer-section {
+    flex: 1; /* Chaque section prend un espace égal */
+    padding: 5px; /* Espacement interne réduit */
+    min-width: 150px; /* Largeur minimale réduite */
+}
+
+.footer-section h5 {
+    font-size: 1.1em; /* Taille de la police des titres réduite */
+    margin-bottom: 5px; /* Espacement sous les titres réduit */
+}
+
+.footer-section p, .footer-section a {
+    margin-bottom: 3px; /* Espacement sous les paragraphes et liens réduit */
+    color: white; /* Couleur des textes */
+    text-decoration: none; /* Pas de soulignement */
+}
+
+.footer-link:hover {
+    text-decoration: underline; /* Soulignement au survol */
+}
+
+.social-media {
+    margin-top: 5px; /* Espacement au-dessus des icônes réduit */
+}
+
+.social-btn {
+    margin-right: 5px; /* Espacement entre les icônes réduit */
+    color: white; /* Couleur des icônes */
+    font-size: 18px; /* Taille des icônes réduite */
+}
+
+.gallery {
+    display: flex; /* Disposition en flex pour les images */
+    flex-wrap: wrap; /* Permet aux images de passer à la ligne */
+    justify-content: space-between; /* Espacement entre les images */
+}
+
+.gallery img {
+    width: 30%; /* Largeur des images */
+    margin-bottom: 10px; /* Espacement en bas */
+    border-radius: 5px; /* Coins arrondis */
+}
+
+.newsletter {
+    display: flex; /* Disposition en flex pour le formulaire */
+}
+
+.newsletter input {
+    flex: 1; /* Prendre l'espace restant */
+    padding: 3px; /* Espacement interne réduit */
+    border: none; /* Pas de bordure */
+    border-radius: 5px 0 0 5px; /* Coins arrondis */
+}
+
+.newsletter button {
+    padding: 3px 8px; /* Espacement interne réduit */
+    background-color: var(--primary-light); /* Couleur de fond du bouton */
+    border: none; /* Pas de bordure */
+    border-radius: 0 5px 5px 0; /* Coins arrondis */
+    cursor: pointer; /* Changer le curseur au survol */
+}
+
+.newsletter button:hover {
+    background-color: var(--primary-color); /* Couleur au survol */
+}
+
+.copyright {
+    text-align: center; /* Centrer le texte */
+    padding: 5px 0; /* Espacement vertical réduit */
+    border-top: 1px solid white; /* Bordure supérieure */
+    margin-top: 5px; /* Espacement au-dessus réduit */
+}
+
+.footer-menu {
+    margin-top: 5px; /* Espacement au-dessus du menu réduit */
+}
+
+.footer-menu a {
+    color: white; /* Couleur des liens */
+    margin: 0 5px; /* Espacement horizontal réduit */
+    text-decoration: none; /* Pas de soulignement */
+}
+
+.footer-menu a:hover {
+    text-decoration: underline; /* Soulignement au survol */
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Disposition en colonne sur mobile */
+        align-items: center; /* Centrer les éléments */
+    }
+    
+    .gallery img {
+        width: 80%; /* Largeur des images sur mobile */
+    }
+    
+    .newsletter {
+        flex-direction: column; /* Disposition en colonne pour le formulaire */
+    }
+    
+    .newsletter input {
+        margin-bottom: 5px; /* Espacement en bas réduit */
+        width: 100%; /* Largeur à 100% sur mobile */
+    }
+}
+  </style>
+</head>
+<body>
+   <!-- Navbar -->
+   <nav>
+    <div class="nav-container">
+        <div class="icon p-2 me-2">
+            <img class="img-fluid" src="PALIAS HOTEL.png" alt="Icon" style="width: 70px; height: 70px;">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="hébergement.html">HÉBERGEMENT</a></li>
+            <li><a href="#">SERVICES</a></li>
+            <li><a href="gallerie.html">GALLERIE</a></li>
+            <li><a href="events.html">ÉVÉNEMENT ÉXCLUSIF</a></li>
+            <li><a href="inscription.html">CONNEXION</a></li>
+        </ul>
+    </div>
+</nav>
+  <div class="gallery-title">
+    <h1>GALERIE DE NOTRE HÔTEL</h1>
+  </div>
+
+  <div class="gallery-container">
+    <div class="gallery-item">
+        <img src="accommodation-page-3rd-block-petite-photo-suite-n3.jpg" alt="Vue de notre hôtel 1">
+    </div>
+    <div class="gallery-item">
+        <img src="s2.jpg" alt="Vue de notre hôtel 2">
+    </div>
+    <div class="gallery-item">
+        <img src="les-hammams-04-.jpeg" alt="Vue de notre hôtel 3">
+    </div>
+    <div class="gallery-item">
+        <img src="la-koutoubia.jpg" alt="Vue de notre hôtel 4">
+    </div>
+    <div class="gallery-item">
+        <img src="MRK_719_original.jpg" alt="Vue de notre hôtel 5">
+    </div>
+    <div class="gallery-item">
+        <img src="g6.jpg" alt="Vue de notre hôtel 6">
+    </div>
+    <div class="gallery-item">
+        <img src="g1.jpg" alt="Vue de notre hôtel 7">
+    </div>
+    <div class="gallery-item">
+        <img src="g23.jpg" alt="Vue de notre hôtel 8">
+    </div>
+    <div class="gallery-item">
+        <img src="g13.jpg" alt="Vue de notre hôtel 9">
+    </div>
+    <div class="gallery-item">
+        <img src="g26.jpg" alt="Vue de notre hôtel 10">
+    </div>
+  </div>
+
+ <!--Footer-->
+ <div class="footer">
+  <div class="footer-container">
+      <div class="footer-section">
+          <h5>Get In Touch</h5>
+          <p><i class="fa fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+          <p><i class="fa fa-phone-alt"></i> +012 345 67890</p>
+          <p><i class="fa fa-envelope"></i> info@example.com</p>
+          <div class="social-media">
+              <a class="social-btn" href=""><i class="fab fa-twitter"></i></a>
+              <a class="social-btn" href=""><i class="fab fa-facebook-f"></i></a>
+              <a class="social-btn" href=""><i class="fab fa-youtube"></i></a>
+              <a class="social-btn" href=""><i class="fab fa-linkedin-in"></i></a>
+          </div>
+      </div>
+      <div class="footer-section">
+          <h5>Liens</h5>
+          <a class="footer-link" href="index.html#bgservices">Notre Hotel</a>
+          <a class="footer-link" href="index.html#bgpro">Actualités</a>
+          <a class="footer-link" href="index.html#contact-section">Contact</a>
+          <a class="footer-link" href="about.html">Services</a>
+      </div>
+      
+      <div class="footer-section">
+          <h5>Newsletter</h5>
+          <p>Inscrivez-vous pour des mises à jour.</p>
+          <div class="newsletter">
+              <input type="text" placeholder="Votre email">
+              <button type="button">S'inscrire</button>
+          </div>
+      </div>
+  </div>
+  <div class="copyright">
+      <p>&copy; Tous droits réservés. Conçu par <a href="https://PALAIS_REVES.com">PALAIS_REVES</a></p>
+      <div class="footer-menu">
+          <a href="">Home</a>
+          <a href="">Cookies</a>
+          <a href="">Help</a>
+          <a href="">FQAs</a>
+      </div>
+  </div>
+</div>
+</body>
+</html>

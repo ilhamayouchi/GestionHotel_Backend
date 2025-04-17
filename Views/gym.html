@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITNESS ET LOISIRS</title>
+    <style>
+        :root {
+            --primary-color: #852929; /* Couleur principale */
+            --primary-light: #a33434; /* Couleur principale claire */
+            --gold: #c5a47e; /* Doré */
+            --cream: #f5f5f0; /* Crème */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--cream);
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #fff; /* Couleur de fond de la navbar */
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .text-content {
+            flex: 2;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: var(--primary-color);
+        }
+
+        p {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: var(--primary-light);
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .containerp {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .photo {
+            flex: 1;
+            margin: 10px;
+        }
+
+        .photo img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .description {
+            flex: 1;
+            margin: 10px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            background-color: var(--gold);
+            color: white;
+            padding: 10px 0;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            padding: 5px;
+            min-width: 150px;
+        }
+
+        .footer-section h5 {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .footer-section p, .footer-section a {
+            margin-bottom: 3px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        .social-media {
+            margin-top: 5px;
+        }
+
+        .social-btn {
+            margin-right: 5px;
+            color: white;
+            font-size: 18px;
+        }
+
+        .newsletter {
+            display: flex;
+        }
+
+        .newsletter input {
+            flex: 1;
+            padding: 3px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .newsletter button {
+            padding: 3px 8px;
+            background-color: var(--primary-light);
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        .newsletter button:hover {
+            background-color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 5px 0;
+            border-top: 1px solid white;
+            margin-top: 5px;
+        }
+
+        .footer-menu {
+            margin-top: 5px;
+        }
+
+        .footer-menu a {
+            color: white;
+            margin: 0 5px;
+            text-decoration: none;
+        }
+
+        .footer-menu a:hover {
+            text-decoration: underline;
+        }
+
+        .rituels-button {
+            padding: 10px 15px;
+            background-color: var(--primary-light);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none; /* Remove underline */
+            display: inline-block; /* Make the link behave like a button */
+            margin-top: 20px; /* Add some margin */
+        }
+
+        .rituels-button:hover {
+            background-color: var(--primary-color); /* Change color on hover */
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-container">
+            <div class="icon p-2 me-2">
+                <img class="img-fluid" src="PALIAS HOTEL.png" alt="Icon" style="width: 70px; height: 70px;">
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="hébergement.html">HÉBERGEMENT</a></li>
+                <li><a href="#">SERVICES</a></li>
+                <li><a href="gallerie.html">GALLERIE</a></li>
+                <li><a href="events.html">ÉVÉNEMENT ÉXCLUSIF</a></li>
+                <li><a href="inscription.html">CONNEXION</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="text-content">
+            <h1>FITNESS ET LOISIRS</h1>
+            <h2>Quand l’effort physique devient plaisir</h2>
+            <p>
+                Des produits d’accueil sont gracieusement mis à votre disposition, sur demande à la réception du fitness and gym. Pour toute annulation ou modification d’une réservation, merci de prévenir l’équipe du fitness and gym, 24h avant votre rendez-vous. Toute arrivée tardive sera déduite de la durée du soin. Les frais du traitement complet seront appliqués.
+            </p>
+            <div class="button-container">
+                <button id="reserveButton">
+                    <a href="reservergym.html" style="color: white; text-decoration: none;">RÉSERVER</a>
+                </button>
+                <a class="rituels-button" href="Gym Offre.pdf" download="palaismarrakechhotel">NOS OFFRES</a>
+            </div>
+        </div>
+        <div class="photo">
+            <img src="gym3.jpg" alt="gym">
+        </div>
+    </div>
+
+    <div class="containerp">
+        <div class="photo">
+            <img src="gym-2.jpg" alt="gym">
+        </div>
+        <div class="description">
+            <h2>Horaires d'Ouverture de la Salle de Sport</h2>
+            <p>
+                La salle de sport du Palais Hôtel est ouverte tous les jours de la semaine, offrant ainsi une flexibilité optimale pour les hôtes. Elle accueille ses visiteurs du lundi au dimanche, de 6h00 à 22h00, permettant à chacun de s’entraîner à tout moment de la journée.
+            </p>
+        </div>
+    </div>
+
+    <div class="containerp">
+        <div class="description">
+            <h2>Un Service d'Excellence pour Votre Expérience Sportive</h2>
+            <p>
+                La qualité de nos services est au cœur de notre engagement envers nos clients. Nous offrons des produits d’accueil de première qualité, disponibles sur demande à la réception du fitness and gym. Notre équipe dévouée est toujours prête à répondre à vos besoins, garantissant une expérience sportive et de bien-être exceptionnelle.
+            </p>
+        </div>
+        <div class="photo">
+            <img src="gym1.jpg" alt="gym">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h5>Get In Touch</h5>
+                <p><i class="fa fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+                <p><i class="fa fa-phone-alt"></i> +012 345 67890</p>
+                <p><i class="fa fa-envelope"></i> info@example.com</p>
+                <div class="social-media">
+                    <a class="social-btn" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="social-btn" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="social-btn" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="social-btn" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h5>Liens</h5>
+                <a class="footer-link" href="index.html#bgservices">Notre Hotel</a>
+                <a class="footer-link" href="index.html#bgpro">Actualités</a>
+                <a class="footer-link" href="index.html#contact-section">Contact</a>
+                <a class="footer-link" href="about.html">Services</a>
+            </div>
+            <div class="footer-section">
+                <h5>Newsletter</h5>
+                <p>Inscrivez-vous pour des mises à jour.</p>
+                <div class="newsletter">
+                    <input type="text" placeholder="Votre email">
+                    <button type="button">S'inscrire</button>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; Tous droits réservés. Conçu par <a href="https://PALAIS_REVES.com">PALAIS_REVES</a></p>
+            <div class="footer-menu">
+                <a href="">Home</a>
+                <a href="">Cookies</a>
+                <a href="">Help</a>
+                <a href="">FQAs</a>
+            </div>
+        </div>
+    </div>
+
+   
+</body>
+</html>

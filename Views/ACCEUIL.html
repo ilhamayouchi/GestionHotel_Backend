@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Site</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('image copy 3.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .overlay {
+            background-color: rgba(185, 135, 135, 0.54);
+            
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            width: 18rem;
+            margin: 15px;
+            text-align: center;
+            border: none;
+        }
+        .card-img-top {
+        border-radius: 50%; /* Rend l'image circulaire */
+            width: 100px; /* Ajustez la taille selon vos besoins */
+            height: 100px; /* Ajustez la taille selon vos besoins */
+            object-fit: cover; /* Pour garder le ratio d'image */
+            margin: 0 auto; /* Centre l'image dans la carte */
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centre le contenu du corps de la carte */
+        }
+        .card-title {
+            margin-top: 10px; /* Espacement entre l'image et le titre */
+        }
+        .btn-custom {
+            background-color: #c5a47e; /* Couleur personnalisée */
+            color: white; /* Couleur du texte */
+            border: none; /* Pas de bordure */
+        }
+        .btn-custom:hover {
+            background-color: #b5946f; /* Couleur au survol */
+        }
+        .form-container {
+            display: none; /* Masquer le formulaire par défaut */
+            position: absolute; /* Positionner le formulaire par rapport à l'écran */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white; /* Fond blanc pour le formulaire */
+            padding: 20px;
+            border-radius: 8px; /* Coins arrondis */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre */
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <img src="PALIAS HOTEL.png" alt="Logo" class="mb-4" width="300px">
+        <div class="d-flex justify-content-center">
+            <div class="card">
+                <img src="image copy 4.png" class="card-img-top" alt="Image 1">
+                <div class="card-body">
+                    <h5 class="card-title">Admin</h5>
+                    <a href="#" class="btn btn-custom" onclick="showLoginForm('admin')">Se connecter</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="image copy 4.png" class="card-img-top" alt="Image 2">
+                <div class="card-body">
+                    <h5 class="card-title">Client</h5>
+                    <a href="inscription.html" class="btn btn-custom">Se connecter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Formulaire de Connexion -->
+    <div class="form-container" id="loginForm">
+        <h4>Connexion</h4>
+        <form id="form">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe:</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            <button type="submit" class="btn btn-custom">Connexion</button>
+            <button type="button" class="btn btn-secondary" onclick="closeLoginForm()">Annuler</button>
+        </form>
+    </div>
+    <script>
+        function showLoginForm(role) {
+            document.getElementById('loginForm').style.display = 'block';
+
+            document.getElementById('form').onsubmit = function(event) {
+                event.preventDefault();
+                // Simuler une connexion réussie
+                alert('Connexion réussie pour ' + role + ' avec email: ' + document.getElementById('email').value);
+                
+                // Redirection vers la page appropriée
+                if (role === 'admin') {
+                    window.location.href = 'http://127.0.0.1:5503/admin.html#dashboard-section'; // Remplacez par votre page admin
+                } else {
+                    window.location.href = 'client_dashboard.html'; // Remplacez par votre page client
+                }
+            };
+        }
+
+        function closeLoginForm() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('form').reset(); // Réinitialiser le formulaire
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function handleCardClick(cardName) {
+            alert('Vous avez cliqué sur ' + cardName);
+            // Remplacez la ligne ci-dessous par la navigation vers une autre page si nécessaire
+            // window.location.href = cardName === 'Carte 1' ? 'lien1.html' : 'lien2.html';
+        }
+    </script>
+</body>
+</html>

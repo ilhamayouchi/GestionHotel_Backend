@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Profils Clients</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #5c6bc0;
+            --accent-color: #ff7043;
+            --success-color: #66bb6a;
+            --warning-color: #ffb74d;
+            --danger-color: #ef5350;
+            --dark-blue: #1a237e;
+            --light-bg: #f5f6fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--light-bg);
+        }
+
+        .dashboard-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .client-profile {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .client-profile:hover {
+            transform: translateY(-5px);
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .btn-custom {
+            border-radius: 8px;
+            padding: 8px 16px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+        }
+
+        .preferences-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 15px;
+            margin: 2px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4" style="color: var(--dark-blue);">Gestion des Profils Clients</h1>
+
+        <!-- Quick Stats Cards -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="dashboard-card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-users me-2"></i>Total Clients</h5>
+                        <p class="display-6" id="total-clients">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-star me-2"></i>Clients Actifs</h5>
+                        <p class="display-6" id="active-clients">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-chart-line me-2"></i>Nouveaux Clients</h5>
+                        <p class="display-6" id="new-clients">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add New Client Form -->
+        <div class="form-container mb-4">
+            <h4 class="mb-4"><i class="fas fa-user-plus me-2"></i>Ajouter un Nouveau Client</h4>
+            <form id="new-client-form">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <input type="text" class="form-control" id="new-client-name" placeholder="Nom du client" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input type="email" class="form-control" id="new-client-email" placeholder="Email du client" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-custom">
+                    <i class="fas fa-plus me-2"></i>Ajouter Client
+                </button>
+            </form>
+        </div>
+
+        <!-- Client List -->
+        <div id="profile-list" class="mb-4"></div>
+
+        <!-- Preferences Modal -->
+        <div class="modal fade" id="preferencesModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Gérer les Préférences</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="preferences-form">
+                            <select class="form-select mb-3" id="preferences-offers">
+                                <option value="Spa">Offre Spa</option>
+                                <option value="Gym">Offre Gym</option>
+                                <option value="Chambre">Offre Chambre</option>
+                                <option value="Suite">Offre Suite</option>
+                                <option value="Villa">Offre Villa</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary">Ajouter Préférence</button>
+                        </form>
+                        <div id="current-preferences" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let clients = JSON.parse(localStorage.getItem('clients')) || [];
+        let currentClientIndex = null;
+
+        function displayClients() {
+            const list = document.getElementById('profile-list');
+            list.innerHTML = '';
+
+            clients.forEach((client, index) => {
+                const clientCard = document.createElement('div');
+                clientCard.classList.add('client-profile');
+                
+                const preferences = client.preferences.map(pref => 
+                    `<span class="preferences-tag">${pref}</span>`
+                ).join(' ');
+
+                clientCard.innerHTML = `
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <h5 class="mb-0">${client.name}</h5>
+                            <small class="text-muted">${client.email}</small>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="preferences-container">
+                                ${preferences || '<span class="text-muted">Aucune préférence définie</span>'}
+                            </div>
+                        </div>
+                        <div class="col-md-3 text-end">
+                            <button class="btn btn-primary btn-sm btn-custom me-2" onclick="openPreferences(${index})">
+                                <i class="fas fa-cog me-1"></i>Préférences
+                            </button>
+                            <button class="btn btn-danger btn-sm btn-custom" onclick="deleteClient(${index})">
+                                <i class="fas fa-trash me-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                list.appendChild(clientCard);
+            });
+
+            updateStats();
+        }
+
+        function updateStats() {
+            document.getElementById('total-clients').textContent = clients.length;
+            document.getElementById('active-clients').textContent = clients.filter(c => c.preferences.length > 0).length;
+            document.getElementById('new-clients').textContent = clients.filter(c => 
+                new Date(c.dateAdded) > new Date(Date.now() - 30*24*60*60*1000)
+            ).length;
+        }
+
+        function openPreferences(index) {
+            currentClientIndex = index;
+            const client = clients[index];
+            const modal = new bootstrap.Modal(document.getElementById('preferencesModal'));
+            document.getElementById('current-preferences').innerHTML = client.preferences.map(pref => 
+                `<span class="preferences-tag">${pref}</span>`
+            ).join(' ');
+            modal.show();
+        }
+
+        document.getElementById('new-client-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('new-client-name').value;
+            const email = document.getElementById('new-client-email').value;
+
+            const newClient = {
+                name,
+                email,
+                preferences: [],
+                dateAdded: new Date().toISOString()
+            };
+
+            clients.push(newClient);
+            localStorage.setItem('clients', JSON.stringify(clients));
+            displayClients();
+            this.reset();
+        });
+
+        document.getElementById('preferences-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const preference = document.getElementById('preferences-offers').value;
+            if (!clients[currentClientIndex].preferences.includes(preference)) {
+                clients[currentClientIndex].preferences.push(preference);
+                localStorage.setItem('clients', JSON.stringify(clients));
+                document.getElementById('current-preferences').innerHTML = clients[currentClientIndex].preferences.map(pref => 
+                    `<span class="preferences-tag">${pref}</span>`
+                ).join(' ');
+                displayClients();
+            }
+        });
+
+        function deleteClient(index) {
+            if (confirm("Êtes-vous sûr de vouloir supprimer ce client ?")) {
+                clients.splice(index, 1);
+                localStorage.setItem('clients', JSON.stringify(clients));
+                displayClients();
+            }
+        }
+
+        displayClients();
+    </script>
+</body>
+</html>

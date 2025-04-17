@@ -1,0 +1,104 @@
+/* Variables de couleur */
+:root {
+    --primary-color: #852929;
+    --primary-light: #a33434;
+    --gold: #c5a47e;
+    --cream: #f5f5f0;
+}
+
+/* Styles globaux */
+* {
+    font-family: 'Times New Roman', Times, serif; /* Police par défaut */
+}
+
+body {
+    font-family: "Lexend", serif; /* Police principale */
+    background-color: var(--cream); /* Couleur de fond */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Conteneur principal */
+.container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Titres */
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+h2 {
+    font-size: 24px;
+    color: var(--gold); /* Couleur mise à jour */
+}
+
+/* Paragraphes */
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 49px;
+}
+
+/* Bouton de rituels */
+.rituels-button {
+    text-decoration: none;
+    color: white;
+    background-color: var(--gold); /* Couleur mise à jour */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 40px;
+    transition: background-color 0.3s ease;
+}
+
+.rituels-button:hover {
+    background-color: var(--primary-light); /* Effet de survol */
+}
+
+/* Galerie */
+.galleryy {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    padding-bottom: 30px;
+}
+
+.galleryy img {
+    margin: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    max-width: 100%;
+    height: auto;
+    width: 200px; /* Largeur fixe si nécessaire */
+}
+
+/* Informations de contact */
+.contact-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: "Lexend", serif;
+    color: #000;
+}
+
+.contact-item {
+    text-align: center;
+}
+
+.contact-item img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 8px;
+}
+
+.contact-item p {
+    margin: 0;
+}

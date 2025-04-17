@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Profils Clients</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #5c6bc0;
+            --accent-color: #ff7043;
+            --success-color: #66bb6a;
+            --warning-color: #ffb74d;
+            --danger-color: #ef5350;
+            --dark-blue: #1a237e;
+            --light-bg: #f5f6fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--light-bg);
+        }
+
+        .dashboard-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .client-profile {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .client-profile:hover {
+            transform: translateY(-5px);
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .btn-custom {
+            border-radius: 8px;
+            padding: 8px 16px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+        }
+
+        .preferences-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 15px;
+            margin: 2px;
+            font-size: 0.9rem;
+        }
+        .sidebar {
+            background: linear-gradient(135deg, var(--dark-blue), var(--secondary-color));
+            color: white;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar .nav-link {
+            font-size: 1rem;
+            padding: 12px 20px;
+            margin: 4px 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar .nav-link:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+
+        .sidebar .nav-link.active {
+            background-color: rgba(255,255,255,0.2);
+            border-left: 4px solid var(--accent-color);
+        }
+        .navbar {
+            background: white !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar .btn-outline-primary {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .navbar .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1" style="color: var(--primary-color);">Administration</span>
+            <button class="btn btn-outline-primary">Connexion</button>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">  
+    <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" style="min-height: 100vh;">
+        <div class="logo">
+            <img src="PALIAS HOTEL.png" alt="Logo" width="70px" height="70px">
+        </div>
+        <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link  text-white" href="admin.html#dashboard-section" data-section="dashboard">
+                        <i class="fas fa-tachometer-alt me-2"></i> Tableau de bord
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="admin.html#services-section" data-section="services">
+                        <i class="fas fa-concierge-bell me-2"></i> Services
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="admin.html#promotions-section" data-section="promotions">
+                        <i class="fas fa-percentage me-2"></i> Promotions
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-white" href="gesclient copy.html" data-section="client">
+                        <i class="fas fa-users me-2"></i> Gestion de clients
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="admin.html#reviews-section" data-section="reviews">
+                        <i class="fas fa-star me-2"></i> Gestion d'avis
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="admin.html#news-section" data-section="news">
+                        <i class="fas fa-plus me-2"></i> Actualités et événements
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="geschambre.html" data-section="chambre">
+                        <i class="fas fa-hotel me-2"></i> Gestion de chambre  
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9 col-lg-10">
+        <div class="container mt-4">
+            <h2>Gestion des Profils Clients</h2>
+            <button class="btn btn-custom btn-primary" onclick="openForm()">Ajouter un Client</button>
+            
+            <div id="clients-list" class="mt-4">
+                <!-- Exemple de carte client -->
+                <div class="client-profile">
+                    <h3>Nom du Client</h3>
+                    <p>Email: client@example.com</p>
+                    <p>Téléphone: 0123456789</p>
+                    <div>
+                        <button class="btn btn-custom btn-warning" onclick="editClient()">Modifier</button>
+                        <button class="btn btn-custom btn-danger" onclick="deleteClient()">Supprimer</button>
+                    </div>
+                </div>
+                <!-- Répétez les blocs ci-dessus pour chaque client -->
+            </div>
+
+            <!-- Formulaire d'ajout/modification -->
+            <div id="client-form" class="form-container" style="display:none;">
+                <h2>Ajouter/Modifier un Client</h2>
+                <form onsubmit="submitForm(event)">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nom:</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Téléphone:</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-custom btn-success">Enregistrer</button>
+                    <button type="button" class="btn btn-custom btn-secondary" onclick="closeForm()">Annuler</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    function openForm() {
+        document.getElementById('client-form').style.display = 'block';
+        clearForm();
+    }
+
+    function closeForm() {
+        document.getElementById('client-form').style.display = 'none';
+    }
+
+    function clearForm() {
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('phone').value = '';
+    }
+
+    function submitForm(event) {
+        event.preventDefault();
+        // Logique pour enregistrer le client
+        alert("Client enregistré !");
+        closeForm();
+    }
+
+    function editClient() {
+        // Exemple de logique pour modifier un client
+        alert("Modifier le client !");
+        openForm();
+    }
+
+    function deleteClient() {
+        if(confirm("Êtes-vous sûr de vouloir supprimer ce client ?")) {
+            // Logique pour supprimer le client
+            alert("Client supprimé !");
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selman Marrakech - Formulaire</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f6f2;
+    color: #4e4e4e;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+header p {
+    font-size: 18px;
+    color: #a28d63;
+}
+
+.image-section img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+.form-section {
+    margin-top: 20px;
+}
+
+.form-section h2 {
+    color: #a28d63;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+form input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #a28d63;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+form button:hover {
+    background-color: #8c743f;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Selman Marrakech</h1>
+            <p>Remplissez le formulaire et commencez à organiser votre événement à Marrakech</p>
+        </header>
+        <main>
+            <section class="image-section">
+                <img src="sim6778.jpg" alt="Selman Marrakech Image">
+            </section>
+            <section class="form-section">
+                <h2>Information De Contact</h2>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="prenom">Prénom*</label>
+                        <input type="text" id="prenom" name="prenom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nom">Nom*</label>
+                        <input type="text" id="nom" name="nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone">Téléphone*</label>
+                        <input type="tel" id="telephone" name="telephone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail*</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <button type="submit">Envoyer</button>
+                </form>
+            </section>
+        </main>
+    </div>
+    <script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Empêche le rechargement de la page
+        alert('Merci ! Votre formulaire a été soumis.');
+    });
+    </script>
+    
+</body>
+</html>

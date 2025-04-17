@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Services Spa</title>
+    <style>
+      :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #5c6bc0;
+            --accent-color: #ff7043;
+            --success-color: #66bb6a;
+            --warning-color: #ffb74d;
+            --danger-color: #ef5350;
+            --dark-blue: #1a237e;
+            --light-bg: #f5f6fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--light-bg);
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: var(--dark-blue);
+        }
+
+        .service {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 5px 10px;
+            margin-top: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .btn-warning {
+            background-color: var(--warning-color);
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9; /* Ajoute un effet de survol */
+        }
+
+        input, textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #form-container {
+            margin-top: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Gestion des Services Spa</h1>
+
+<!-- Button to Add Spa Service -->
+<button id="btn-add-service" class="btn-primary">Ajouter un Service de Spa</button>
+
+<!-- Form to Add/Edit Service -->
+<div id="form-container" style="display: none;">
+    <h2 id="form-title">Ajouter un Service de Spa</h2>
+    <form id="form-ajouter-service">
+        <label for="service_name">Nom du Service:</label>
+        <input type="text" id="service_name" required><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" required></textarea><br>
+
+        <label for="prix">Prix (en Dhs):</label>
+        <input type="number" id="prix" required><br>
+
+        <label for="duree">Durée (en minutes):</label>
+        <input type="number" id="duree" required><br>
+
+        <button type="submit" class="btn-success">Enregistrer</button>
+        <button type="button" id="cancel-btn" class="btn-danger">Annuler</button>
+    </form>
+</div>
+
+<hr>
+
+<!-- Liste des Services Spa -->
+<h2>Liste des Services Spa</h2>
+<div id="services-list"></div>
+
+<script>
+// Charger les services depuis le localStorage ou initialiser un tableau vide
+let servicesSpa = JSON.parse(localStorage.getItem('servicesSpa')) || [];
+
+// Show Add Service Form
+document.getElementById('btn-add-service').addEventListener('click', function() {
+    document.getElementById('form-container').style.display = 'block';
+    document.getElementById('form-title').textContent = 'Ajouter un Service de Spa';
+    document.getElementById('form-ajouter-service').reset();
+    document.getElementById('cancel-btn').style.display = 'inline';
+});
+
+// Hide Form
+document.getElementById('cancel-btn').addEventListener('click', function() {
+    document.getElementById('form-container').style.display = 'none';
+});
+
+// Ajouter ou modifier un service
+document.getElementById('form-ajouter-service').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const serviceName = document.getElementById('service_name').value;
+    const description = document.getElementById('description').value;
+    const prix = parseFloat(document.getElementById('prix').value);
+    const duree = parseInt(document.getElementById('duree').value);
+
+    const serviceData = {
+        id: Date.now(),
+        name: serviceName,
+        description: description,
+        prix: prix,
+        duree: duree
+    };
+
+    // Si un service existant est sélectionné, on le met à jour
+    const selectedServiceId = document.getElementById('select-service')?.value;
+    if (selectedServiceId) {
+        const existingService = servicesSpa.find(service => service.id === parseInt(selectedServiceId));
+        existingService.name = serviceData.name;
+        existingService.description = serviceData.description;
+        existingService.prix = serviceData.prix;
+        existingService.duree = serviceData.duree;
+    } else {
+        // Ajouter un nouveau service si aucun service existant n'est sélectionné
+        servicesSpa.push(serviceData);
+    }
+
+    // Sauvegarder dans le localStorage et rafraîchir la liste
+    localStorage.setItem('servicesSpa', JSON.stringify(servicesSpa));
+    loadServices();
+    document.getElementById('form-container').style.display = 'none';
+});
+
+// Fonction pour afficher les services
+function loadServices() {
+    const servicesList = document.getElementById('services-list');
+    servicesList.innerHTML = "";  // Vider la liste avant de la remplir
+
+    servicesSpa.forEach((service) => {
+        const serviceElement = document.createElement('div');
+        serviceElement.classList.add('service');
+        serviceElement.innerHTML = `
+            <h3>${service.name}</h3>
+            <p><strong>Description:</strong> ${service.description}</p>
+            <p><strong>Prix:</strong> ${service.prix} Dhs</p>
+            <p><strong>Durée:</strong> ${service.duree} minutes</p>
+            <div class="buttons-container">
+                <button class="btn-secondary" onclick="editService(${service.id})">Modifier</button>
+                <button class="btn-danger" onclick="deleteService(${service.id})">Supprimer</button>
+            </div>
+        `;
+        servicesList.appendChild(serviceElement);
+    });
+}
+
+// Fonction pour supprimer un service
+function deleteService(id) {
+    servicesSpa = servicesSpa.filter(service => service.id !== id);
+    localStorage.setItem('servicesSpa', JSON.stringify(servicesSpa));
+    loadServices();  // Recharger la liste après suppression
+}
+
+// Fonction pour modifier un service (remplir le formulaire avec les données du service)
+function editService(id) {
+    const service = servicesSpa.find(service => service.id === id);
+    document.getElementById('form-container').style.display = 'block';
+    document.getElementById('form-title').textContent = 'Modifier le Service de Spa';
+
+    // Remplir le formulaire avec les données du service
+    document.getElementById('service_name').value = service.name;
+    document.getElementById('description').value = service.description;
+    document.getElementById('prix').value = service.prix;
+    document.getElementById('duree').value = service.duree;
+}
+
+// Charger les services au démarrage
+if (servicesSpa.length === 0) {
+    // Ajouter des services de spa par défaut
+    servicesSpa = [
+        { id: Date.now(), name: "Hammam Marocain Traditionnel", description: "45 minutes de relaxation", prix: 700, duree: 45 },
+        { id: Date.now() + 1, name: "Hammam Selman Signature by marocMaroc", description: "2 heures de hammam et massage", prix: 2000, duree: 120 },
+        { id: Date.now() + 2, name: "Sensations Miel d’Ambre", description: "30 minutes de relaxation", prix: 800, duree: 30 },
+        { id: Date.now() + 3, name: "Enveloppement à la Rose de Sucre by marocMaroc", description: "30 minutes de soin", prix: 850, duree: 30 },
+        { id: Date.now() + 4, name: "Rituel Ancestral à deux", description: "Rituel exclusif à deux", prix: 5000, duree: 120 }
+    ];
+    localStorage.setItem('servicesSpa', JSON.stringify(servicesSpa));
+}
+
+loadServices();
+</script>
+
+
+
+</body>
+</html>

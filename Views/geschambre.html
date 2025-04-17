@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Chambres</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #5c6bc0;
+            --accent-color: #ff7043;
+            --success-color: #66bb6a;
+            --warning-color: #ffb74d;
+            --danger-color: #ef5350;
+            --dark-blue: #1a237e;
+            --light-bg: #f5f6fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--light-bg);
+            padding: 20px;
+        }
+
+        .page-title {
+            color: var(--dark-blue);
+            margin-bottom: 30px;
+        }
+
+        .room-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: none;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .room-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .room-card h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .room-card img {
+            max-width: 200px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .action-button {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 2px var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn-edit {
+            background-color: var(--warning-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+        }
+
+        .btn-delete {
+            background-color: var(--danger-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="page-title">
+            <i class="fas fa-hotel me-2"></i>
+            Gestion des Chambres
+        </h1>
+
+        <button class="action-button mb-4" id="btn-add-chambre">
+            <i class="fas fa-plus me-2"></i>Ajouter une Chambre / Suite / Villa
+        </button>
+
+        <div id="form-container" class="form-container" style="display: none;">
+            <h2 id="form-title" class="mb-4">Ajouter une Chambre</h2>
+            <form id="form-ajouter-chambre">
+                <div class="mb-3">
+                    <label class="form-label">Sélectionner une chambre existante:</label>
+                    <select id="select-chambre" class="form-control">
+                        <option value="">-- Sélectionnez une chambre existante --</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Type de Chambre:</label>
+                    <select id="type_chambre" class="form-control" required>
+                        <option value="Single">Single</option>
+                        <option value="Double">Double</option>
+                        <option value="Triple">Triple</option>
+                        <option value="Suite">Suite</option>
+                        <option value="Suite Junior">Suite Junior</option>
+                        <option value="Villa Unechmbre">Villa Une Chambre</option>
+                        <option value="Villa Palis">Villa Palis</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Description:</label>
+                    <textarea id="description" class="form-control" required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Tarif:</label>
+                    <input type="number" id="tarif" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">URL de la photo:</label>
+                    <input type="text" id="photo" class="form-control">
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="action-button">
+                        <i class="fas fa-save me-2"></i>Enregistrer
+                    </button>
+                    <button type="button" id="cancel-btn" class="btn btn-secondary">
+                        <i class="fas fa-times me-2"></i>Annuler
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div id="chambres-list" class="row"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Charger les chambres depuis le localStorage ou initialiser un tableau vide
+        let chambres = JSON.parse(localStorage.getItem('chambres')) || [];
+
+        // Fonction pour générer des chambres aléatoires
+        function generateRandomChambres() {
+            const types = ["Single", "Double", "Triple", "Suite", "Suite Junior", "Villa Unechmbre", "Villa Palis"];
+            const descriptions = [
+                "Une chambre confortable avec tous les équipements modernes.",
+                "Chambre spacieuse, idéale pour les couples.",
+                "Chambre avec un grand lit et une vue magnifique.",
+                "Suite avec salon privé et salle de bains luxueuse.",
+                "Suite Junior, parfaite pour les familles avec enfants.",
+                "Villa avec une piscine privée et une vue splendide.",
+                "Villa Palis, la plus grande avec un jardin et un espace extérieur."
+            ];
+
+            for (let i = 0; i < 5; i++) {
+                const randomType = types[Math.floor(Math.random() * types.length)];
+                const randomDescription = descriptions[Math.floor(Math.random() * descriptions.length)];
+                const randomTarif = Math.floor(Math.random() * 100) + 80;
+
+                const chambre = {
+                    id: Date.now() + i,
+                    type_chambre: randomType,
+                    description: randomDescription,
+                    tarif: randomTarif,
+                    photo: "/api/placeholder/200/150"
+                };
+
+                chambres.push(chambre);
+            }
+
+            localStorage.setItem('chambres', JSON.stringify(chambres));
+        }
+
+        // Afficher le formulaire
+        document.getElementById('btn-add-chambre').addEventListener('click', function() {
+            document.getElementById('form-container').style.display = 'block';
+            document.getElementById('form-title').textContent = 'Ajouter une Chambre';
+            document.getElementById('form-ajouter-chambre').reset();
+        });
+
+        // Cacher le formulaire
+        document.getElementById('cancel-btn').addEventListener('click', function() {
+            document.getElementById('form-container').style.display = 'none';
+        });
+
+        // Gérer le formulaire
+        document.getElementById('form-ajouter-chambre').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const chambreData = {
+                id: Date.now(),
+                type_chambre: document.getElementById('type_chambre').value,
+                description: document.getElementById('description').value,
+                tarif: parseFloat(document.getElementById('tarif').value),
+                photo: document.getElementById('photo').value || '/api/placeholder/200/150'
+            };
+
+            const selectedChambreId = document.getElementById('select-chambre').value;
+            if (selectedChambreId) {
+                const index = chambres.findIndex(c => c.id === parseInt(selectedChambreId));
+                chambres[index] = { ...chambres[index], ...chambreData };
+            } else {
+                chambres.push(chambreData);
+            }
+
+            localStorage.setItem('chambres', JSON.stringify(chambres));
+            loadChambres();
+            document.getElementById('form-container').style.display = 'none';
+        });
+
+        // Afficher les chambres
+        function loadChambres() {
+            const chambresList = document.getElementById('chambres-list');
+            chambresList.innerHTML = '';
+
+            chambres.forEach((chambre) => {
+                const chambreElement = document.createElement('div');
+                chambreElement.className = 'col-md-6 col-lg-4';
+                chambreElement.innerHTML = `
+                    <div class="room-card">
+                        <h3>${chambre.type_chambre}</h3>
+                        <img src="${chambre.photo}" alt="Photo de la chambre" class="img-fluid">
+                        <p><strong>Description:</strong> ${chambre.description}</p>
+                        <p><strong>Tarif:</strong> ${chambre.tarif} EUR</p>
+                        <div class="btn-group">
+                            <button class="btn-edit" onclick="editChambre(${chambre.id})">
+                                <i class="fas fa-edit me-2"></i>Modifier
+                            </button>
+                            <button class="btn-delete" onclick="deleteChambre(${chambre.id})">
+                                <i class="fas fa-trash me-2"></i>Supprimer
+                            </button>
+                        </div>
+                    </div>
+                `;
+                chambresList.appendChild(chambreElement);
+            });
+        }
+
+        // Supprimer une chambre
+        function deleteChambre(id) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer cette chambre ?')) {
+                chambres = chambres.filter(chambre => chambre.id !== id);
+                localStorage.setItem('chambres', JSON.stringify(chambres));
+                loadChambres();
+            }
+        }
+
+        // Modifier une chambre
+        function editChambre(id) {
+            const chambre = chambres.find(chambre => chambre.id === id);
+            document.getElementById('form-container').style.display = 'block';
+            document.getElementById('form-title').textContent = 'Modifier la Chambre';
+            document.getElementById('type_chambre').value = chambre.type_chambre;
+            document.getElementById('description').value = chambre.description;
+            document.getElementById('tarif').value = chambre.tarif;
+            document.getElementById('photo').value = chambre.photo;
+            document.getElementById('select-chambre').value = chambre.id;
+        }
+
+        // Initialiser les données si nécessaire et charger les chambres
+        if (chambres.length === 0) {
+            generateRandomChambres();
+        }
+        loadChambres();
+    </script>
+</body>
+</html>

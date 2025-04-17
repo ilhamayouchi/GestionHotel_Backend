@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Séances de Gym</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #5c6bc0;
+            --accent-color: #ff7043;
+            --success-color: #66bb6a;
+            --warning-color: #ffb74d;
+            --danger-color: #ef5350;
+            --dark-blue: #1a237e;
+            --light-bg: #f5f6fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--light-bg);
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service:hover {
+            transform: translateY(-5px);
+        }
+
+        h1, h2 {
+            color: var(--dark-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .buttons-container .btn {
+            margin-right: 10px;
+            padding: 8px 15px;
+            border-radius: 6px;
+        }
+
+        #form-container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Gestion des Séances de Gym</h1>
+
+        <button id="btn-add-service" class="btn btn-primary mb-4">
+            <i class="fas fa-plus-circle me-2"></i>Ajouter une Séance de Gym
+        </button>
+
+        <div id="form-container" class="d-none">
+            <h2 id="form-title">Ajouter une Séance de Gym</h2>
+            <form id="form-ajouter-service">
+                <div class="mb-3">
+                    <label class="form-label">Nom de la Séance</label>
+                    <input type="text" id="service_name" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea id="description" class="form-control" required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Prix (en MAD)</label>
+                    <input type="number" id="prix" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Durée (en minutes)</label>
+                    <input type="number" id="duree" class="form-control" required>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-2"></i>Enregistrer
+                    </button>
+                    <button type="button" id="cancel-btn" class="btn btn-secondary">
+                        <i class="fas fa-times me-2"></i>Annuler
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <h2 class="mt-4">Liste des Séances de Gym</h2>
+        <div id="services-list"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let gymServices = JSON.parse(localStorage.getItem('gymServices')) || [];
+
+        document.getElementById('btn-add-service').addEventListener('click', function() {
+            document.getElementById('form-container').classList.remove('d-none');
+            document.getElementById('form-title').textContent = 'Ajouter une Séance de Gym';
+            document.getElementById('form-ajouter-service').reset();
+        });
+
+        document.getElementById('cancel-btn').addEventListener('click', function() {
+            document.getElementById('form-container').classList.add('d-none');
+        });
+
+        document.getElementById('form-ajouter-service').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const serviceData = {
+                id: Date.now(),
+                name: document.getElementById('service_name').value,
+                description: document.getElementById('description').value,
+                prix: parseFloat(document.getElementById('prix').value),
+                duree: parseInt(document.getElementById('duree').value)
+            };
+
+            gymServices.push(serviceData);
+            localStorage.setItem('gymServices', JSON.stringify(gymServices));
+            loadGymServices();
+            document.getElementById('form-container').classList.add('d-none');
+            document.getElementById('form-ajouter-service').reset();
+        });
+
+        function loadGymServices() {
+            const servicesList = document.getElementById('services-list');
+            servicesList.innerHTML = '';
+
+            gymServices.forEach((service) => {
+                const serviceElement = document.createElement('div');
+                serviceElement.classList.add('service');
+                serviceElement.innerHTML = `
+                    <h3 class="text-primary mb-3">${service.name}</h3>
+                    <p><strong>Description:</strong> ${service.description}</p>
+                    <p><strong>Prix:</strong> ${service.prix} MAD</p>
+                    <p><strong>Durée:</strong> ${service.duree} minutes</p>
+                    <div class="buttons-container">
+                        <button class="btn btn-warning" onclick="editGymService(${service.id})">
+                            <i class="fas fa-edit me-2"></i>Modifier
+                        </button>
+                        <button class="btn btn-danger" onclick="deleteGymService(${service.id})">
+                            <i class="fas fa-trash me-2"></i>Supprimer
+                        </button>
+                    </div>
+                `;
+                servicesList.appendChild(serviceElement);
+            });
+        }
+
+        function deleteGymService(id) {
+            if(confirm('Êtes-vous sûr de vouloir supprimer cette séance ?')) {
+                gymServices = gymServices.filter(service => service.id !== id);
+                localStorage.setItem('gymServices', JSON.stringify(gymServices));
+                loadGymServices();
+            }
+        }
+
+        function editGymService(id) {
+            const service = gymServices.find(service => service.id === id);
+            document.getElementById('form-container').classList.remove('d-none');
+            document.getElementById('form-title').textContent = 'Modifier la Séance de Gym';
+            
+            document.getElementById('service_name').value = service.name;
+            document.getElementById('description').value = service.description;
+            document.getElementById('prix').value = service.prix;
+            document.getElementById('duree').value = service.duree;
+        }
+
+        if (gymServices.length === 0) {
+            gymServices = [
+                { id: Date.now(), name: "Yoga", description: "Séance de Yoga", prix: 1400, duree: 60 },
+                { id: Date.now() + 1, name: "Mat Pilates", description: "Pilates sur tapis", prix: 1200, duree: 60 },
+                { id: Date.now() + 2, name: "Boxe", description: "Séance de Boxe", prix: 800, duree: 60 }
+            ];
+            localStorage.setItem('gymServices', JSON.stringify(gymServices));
+        }
+
+        loadGymServices();
+    </script>
+</body>
+</html>

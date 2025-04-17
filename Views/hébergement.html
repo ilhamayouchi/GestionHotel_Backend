@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="hébergement.css">
+        
+        
+        <link rel="stylesheet" href="foot&nav.css">
+       <title>Les Hébergements</title>
+    <style>
+        nav {
+            background-color: #fff; /* Couleur de fond de la navbar */
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links li a {
+            text-decoration: none;
+            color: #852929; /* Couleur du texte */
+            font-weight: bold;
+        }
+        .reserve-button {
+            display: inline-block; /* Make it behave like a button */
+            padding: 10px 15px;
+            background-color: #852929; /* Couleur du bouton */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .reserve-button:hover {
+            background-color: #a33434; /* Couleur au survol */
+        }
+        .footer {
+    background-color: var(--gold); /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    padding: 10px 0; /* Espacement vertical réduit */
+}
+
+.footer-container {
+    display: flex; /* Disposition en flex */
+    justify-content: space-between; /* Espacement entre les sections */
+    flex-wrap: wrap; /* Permet aux sections de passer à la ligne si besoin */
+    max-width: 1200px; /* Largeur maximale */
+    margin: 0 auto; /* Centrer le conteneur */
+}
+
+.footer-section {
+    flex: 1; /* Chaque section prend un espace égal */
+    padding: 5px; /* Espacement interne réduit */
+    min-width: 150px; /* Largeur minimale réduite */
+}
+
+.footer-section h5 {
+    font-size: 1.1em; /* Taille de la police des titres réduite */
+    margin-bottom: 5px; /* Espacement sous les titres réduit */
+}
+
+.footer-section p, .footer-section a {
+    margin-bottom: 3px; /* Espacement sous les paragraphes et liens réduit */
+    color: white; /* Couleur des textes */
+    text-decoration: none; /* Pas de soulignement */
+}
+
+.footer-link:hover {
+    text-decoration: underline; /* Soulignement au survol */
+}
+
+.social-media {
+    margin-top: 5px; /* Espacement au-dessus des icônes réduit */
+}
+
+.social-btn {
+    margin-right: 5px; /* Espacement entre les icônes réduit */
+    color: white; /* Couleur des icônes */
+    font-size: 18px; /* Taille des icônes réduite */
+}
+
+.gallery {
+    display: flex; /* Disposition en flex pour les images */
+    flex-wrap: wrap; /* Permet aux images de passer à la ligne */
+    justify-content: space-between; /* Espacement entre les images */
+}
+
+.gallery img {
+    width: 30%; /* Largeur des images */
+    margin-bottom: 10px; /* Espacement en bas */
+    border-radius: 5px; /* Coins arrondis */
+}
+
+.newsletter {
+    display: flex; /* Disposition en flex pour le formulaire */
+}
+
+.newsletter input {
+    flex: 1; /* Prendre l'espace restant */
+    padding: 3px; /* Espacement interne réduit */
+    border: none; /* Pas de bordure */
+    border-radius: 5px 0 0 5px; /* Coins arrondis */
+}
+
+.newsletter button {
+    padding: 3px 8px; /* Espacement interne réduit */
+    background-color: var(--primary-light); /* Couleur de fond du bouton */
+    border: none; /* Pas de bordure */
+    border-radius: 0 5px 5px 0; /* Coins arrondis */
+    cursor: pointer; /* Changer le curseur au survol */
+}
+
+.newsletter button:hover {
+    background-color: var(--primary-color); /* Couleur au survol */
+}
+
+.copyright {
+    text-align: center; /* Centrer le texte */
+    padding: 5px 0; /* Espacement vertical réduit */
+    border-top: 1px solid white; /* Bordure supérieure */
+    margin-top: 5px; /* Espacement au-dessus réduit */
+}
+
+.footer-menu {
+    margin-top: 5px; /* Espacement au-dessus du menu réduit */
+}
+
+.footer-menu a {
+    color: white; /* Couleur des liens */
+    margin: 0 5px; /* Espacement horizontal réduit */
+    text-decoration: none; /* Pas de soulignement */
+}
+
+.footer-menu a:hover {
+    text-decoration: underline; /* Soulignement au survol */
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Disposition en colonne sur mobile */
+        align-items: center; /* Centrer les éléments */
+    }
+    
+    .gallery img {
+        width: 80%; /* Largeur des images sur mobile */
+    }
+    
+    .newsletter {
+        flex-direction: column; /* Disposition en colonne pour le formulaire */
+    }
+    
+    .newsletter input {
+        margin-bottom: 5px; /* Espacement en bas réduit */
+        width: 100%; /* Largeur à 100% sur mobile */
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-container">
+            <div class="icon p-2 me-2">
+                <img class="img-fluid" src="PALIAS HOTEL.png" alt="Icon" style="width: 70px; height: 70px;">
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="hébergement.html">HÉBERGEMENT</a></li>
+                <li><a href="#">SERVICES</a></li>
+                <li><a href="gallerie.html">GALLERIE</a></li>
+                <li><a href="events.html">ÉVÉNEMENT ÉXCLUSIF</a></li>
+                <li><a href="inscription.html">CONNEXION</a></li>
+            </ul>
+        </div>
+    </nav>
+            
+            
+
+           
+       
+          <!--Corps-->
+          <div class="booking-container">
+            <div class="booking-field">
+                <label>Date d'arrivée</label>
+                <input type="date" value="2024-12-30">
+            </div>
+            
+            <div class="booking-field">
+                <label>Date de départ</label>
+                <input type="date" value="2024-12-31">
+            </div>
+            
+            <a href="Reservation.html" class="reserve-button">
+                Réservez<br>maintenant
+            </a>
+        </div>
+   
+     <!-- les chambres-->
+     <div class="containerp">
+        <div class="photo">
+            <img src="accommodation-page-3rd-block-petite-photo-suite-n3.jpg" alt="Appartement F4">
+        </div>
+        <div class="description">
+            <h2>Les Chambres</h2>
+            <p>
+                <strong>Capacité d’accueil :</strong> 6 adultes + 2 enfants ou 7 adultes + 1 enfant
+            </p>
+            <p>
+                Les 20 appartements de notre établissement sont tous équipés de 3 chambres à coucher,
+                d’un séjour, d’une cuisine entièrement équipée, d’un espace salle à manger, 
+                de deux salles de bain et d’une terrasse.
+            </p>
+            <div class="icons">
+                <img src="7079415.png" alt="Wi-Fi">
+                <img src="1470045.png" alt="Téléphone">
+                <img src="11057301.png" alt="Air-conditionné">
+                <img src="3289253.png" alt="Télévision">
+                <img src="5928585.png" alt="Lit">
+            </div>
+            <div class="info-text">
+                <a href="leschambres.html" class="btn">Découvrir →</a>
+            </div>
+        </div>
+    </div>
+    <div class="containerp">
+        <div class="description">
+            <h2>Les suites</h2>
+            <p>
+                <strong>Capacité d’accueil :</strong> 6 adultes + 2 enfants ou 7 adultes + 1 enfant
+            </p>
+            <p>
+                Les 20 appartements de notre établissement sont tous équipés de 3 chambres à coucher,
+                d’un séjour, d’une cuisine entièrement équipée, d’un espace salle à manger, 
+                de deux salles de bain et d’une terrasse.
+            </p>
+            <div class="icons">
+                <img src="7079415.png" alt="Wi-Fi">
+                <img src="1470045.png" alt="Téléphone">
+                <img src="11057301.png" alt="Air-conditionné">
+                <img src="3289253.png" alt="Télévision">
+                <img src="5928585.png" alt="Lit">
+            </div>
+            <div class="info-text">
+                <a href="lessuites.html" class="btn">Découvrir →</a>
+            </div>
+        </div>
+        <div class="photo">
+            <img src="accommodation-page-3rd-block-grande-photo-suite-n1.jpg" alt="Appartement F4">
+        </div>
+    </div>
+    <div class="containerp">
+        <div class="photo">
+            <img src="Riad-Superieur.jpg.webp" alt="Appartement F4">
+        </div>
+        <div class="description">
+            <h2>Les Villas</h2>
+            <p>
+                <strong>Capacité d’accueil :</strong> 6 adultes + 2 enfants ou 7 adultes + 1 enfant
+            </p>
+            <p>
+                Les 20 appartements de notre établissement sont tous équipés de 3 chambres à coucher,
+                d’un séjour, d’une cuisine entièrement équipée, d’un espace salle à manger, 
+                de deux salles de bain et d’une terrasse.
+            </p>
+            <div class="icons">
+                <img src="7079415.png" alt="Wi-Fi">
+                <img src="1470045.png" alt="Téléphone">
+                <img src="11057301.png" alt="Air-conditionné">
+                <img src="3289253.png" alt="Télévision">
+                <img src="5928585.png" alt="Lit">
+            </div>
+            <div class="info-text">
+            <a href="lesvilla.html" class="btn">Découvrir →</a>
+        </div>
+        </div>
+    </div>
+    
+    
+
+        <!--Footer-->
+        <div class="footer">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h5>Get In Touch</h5>
+                    <p><i class="fa fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+                    <p><i class="fa fa-phone-alt"></i> +012 345 67890</p>
+                    <p><i class="fa fa-envelope"></i> info@example.com</p>
+                    <div class="social-media">
+                        <a class="social-btn" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="social-btn" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="social-btn" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="social-btn" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h5>Liens</h5>
+                    <a class="footer-link" href="index.html#bgservices">Notre Hotel</a>
+                    <a class="footer-link" href="index.html#bgpro">Actualités</a>
+                    <a class="footer-link" href="index.html#contact-section">Contact</a>
+                    <a class="footer-link" href="about.html">Services</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h5>Newsletter</h5>
+                    <p>Inscrivez-vous pour des mises à jour.</p>
+                    <div class="newsletter">
+                        <input type="text" placeholder="Votre email">
+                        <button type="button">S'inscrire</button>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; Tous droits réservés. Conçu par <a href="https://PALAIS_REVES.com">PALAIS_REVES</a></p>
+                <div class="footer-menu">
+                    <a href="">Home</a>
+                    <a href="">Cookies</a>
+                    <a href="">Help</a>
+                    <a href="">FQAs</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

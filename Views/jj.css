@@ -1,0 +1,57 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.containerp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Photo à gauche */
+.photo {
+    flex: 1; /* Prend 50% de la largeur */
+}
+
+.photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Description à droite */
+.description {
+    flex: 1; /* Prend 50% de la largeur */
+    padding: 20px;
+}
+
+.description h2 {
+    color: #B81F39; /* Couleur du titre */
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.description p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.icons {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    gap: 15px; /* Espacement entre les icônes */
+}
+
+.icons img {
+    width: 40px; /* Taille des icônes */
+    height: auto;
+}
